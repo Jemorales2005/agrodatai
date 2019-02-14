@@ -1,0 +1,25 @@
+#application: cebar-servinf-agrodat-ai-dev
+#version: beta
+runtime: php55
+api_version: 1
+threadsafe: yes
+
+
+handlers:
+- url: /(.+\.(gif|png|jpg|js|css))$
+  static_files: \1
+  upload: .*\.(gif|png|jpg|js|css)$
+- url: /
+  static_files: index.html
+  upload: index.html
+
+
+skip_files:
+  - ^(.*/)?#.*#$
+  - ^(.*/)?.*~$
+  - ^.node_modules$
+  - ^.bower_components$
+  - ^.idea$
+  - ^.git$
+  - ^.vscode$
+  - ^test$

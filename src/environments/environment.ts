@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  URLBackend: 'https://beta-dot-backend-dot-cebar-servinf-agrodat-ai-dev.appspot.com/'
 };
 
 /*

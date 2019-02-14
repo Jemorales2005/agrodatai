@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  URLBackend: 'https://beta-dot-backend-dot-cebar-servinf-agrodat-ai-dev.appspot.com/'
 };
