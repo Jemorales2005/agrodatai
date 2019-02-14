@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "GOOGLESANS-BOLD";
+  src: url("/assets/fonts/GOOGLESANS-BOLD.TTF");
+}
+@font-face {
+  font-family: "GOOGLESANS-BOLDITALIC";
+  src: url("/assets/fonts/GOOGLESANS-BOLDITALIC.TTF");
+}
+@font-face {
+  font-family: "GOOGLESANS-ITALIC";
+  src: url("/assets/fonts/GOOGLESANS-ITALIC.TTF");
+}
+@font-face {
+  font-family: "GOOGLESANS-MEDIUM";
+  src: url("/assets/fonts/GOOGLESANS-MEDIUM.TTF");
+}
+@font-face {
+  font-family: "GOOGLESANS-MEDIUMITALIC";
+  src: url("/assets/fonts/GOOGLESANS-MEDIUMITALIC.TTF");
+}
+@font-face {
+  font-family: "GOOGLESANS-REGULAR";
+  src: url("/assets/fonts/GOOGLESANS-REGULAR.TTF");
+}
+h2 .txt-home{
+  font-family: "GOOGLESANS-MEDIUM";
+  font-weight: bold;
+  font-size: 2vw;
+  color: #FFF !important;
+}
+
+

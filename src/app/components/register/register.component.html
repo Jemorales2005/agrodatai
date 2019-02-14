@@ -1,0 +1,52 @@
+<!--navbar-->
+<app-navbarhome></app-navbarhome>
+<!--/navbar-->
+<main id="main">
+  <div id="contenedorRegister">
+   <img class="d-block w-100" src="/assets/images/Agrodat-App-15.jpg">
+    <div class="overlay">
+      <div class="container">
+        <div class="row align-items-center">
+
+          <div class="col-md-1 col-sm-0"></div>
+          <div class="col-md-10 col-sm-12 text-center central">
+            <!--interno-->
+            <div class="msgHome">
+                <div class="txtHome">
+                  <h2 class="txt-home">Las mejores decisiones con soluciones agropecuarias</h2>
+                </div>
+            </div>
+            <div id="registerForm">
+                  <div class="registerForm-bg">
+                    <div class="titRegistro">REGISTRO</div>
+                      <form>
+                        <div class="form-group">
+                          <label for="Nombre" class="titForm">PERFIL</label>
+                            <select class="form-control slct-50">
+                              <option>Productor</option>
+                              <option>Financiero</option>
+                              <option>Políticas públicas</option>
+                              <option>Proveedor</option>
+                              <option>Comercializador</option>
+                            </select>
+                        </div>
+                      </form>
+                      <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+      <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen">
+      </agm-marker>
+      <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      <agm-marker [latitude]="4.6670526" [longitude]="-74.0550849"></agm-marker>
+      <agm-marker [latitude]="4.6592451" [longitude]="-74.06122839999999"></agm-marker>-->
+    </agm-map>
+                  </div>
+                </div>
+            <!--fin interno-->
+          </div>
+          <div class="col-md-1 col-sm-0"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

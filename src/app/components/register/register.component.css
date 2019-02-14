@@ -1,0 +1,121 @@
+agm-map {
+  height: 35vh;
+  width: 100hw;
+}
+
+#contenedorRegister {
+  position: relative;
+  background-image: url('/assets/images/Agrodat-App-15.png');
+
+}
+
+#contenedorRegister .overlay {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  }
+#contenedorRegister .overlay .container,
+#contenedorRegister .overlay .row  {
+height: 90%;
+}
+#contenedorRegister .overlay .container .row .central{
+position: relative;
+border-radius: 8px;
+margin:0;
+padding: 0;
+/**sombra**/
+-webkit-box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.75);
+}
+#contenedorRegister .overlay .container .row .msgHome{
+float:left;
+width:35%;
+}
+.txtHome{
+width:35%;
+position: absolute;
+top: 200px;
+padding: 0px 20px 0px 20px;
+}
+#registerForm .registerForm-bg {
+float:right;
+width: 64%;
+min-height: 420px;
+border-top-right-radius:8px;
+border-bottom-right-radius: 8px;
+vertical-align: top;
+font-family: "GOOGLESANS-REGULAR";
+font-weight: bold;
+text-align: left;
+background-color: white;
+color:#1B7A6F;
+padding: 25px;
+}
+
+#registerForm .titRegistro {
+  font-family: "GOOGLESANS-MEDIUM";
+  color:#502975;
+  font-size: 19px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+#registerForm .titForm {
+  font-family: "GOOGLESANS-REGULAR";
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0px 5px 0px 5px;
+}
+#registerForm .inputsForm{
+  border-radius: 15px;
+  background-color: #D5F5E3;
+  font-size: 12px;
+}
+.slct-50{
+  width: 50%;
+  border-radius: 20px;
+  color: #049E82;
+  background-color: #9DFCFC;
+  font-size: 12px;
+}
+
+#registerForm .flex-c-m {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+@media only screen and (max-width: 800px) {
+
+  #registerForm .registerForm-bg {
+  width: 95%;
+  }
+
+  h2 .txt-home{
+    font-weight:normal;
+    font-size: 5px;
+  }
+  #contenedorRegister .overlay .row  {
+    box-shadow: 0px;
+  }
+  #registerForm .registerForm-bg {
+  width:98%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 8px;
+
+  }
+  #contenedorRegister .overlay .container .row .msgHome{
+  }
+  select {
+    width:100%;
+  }
+
+}
