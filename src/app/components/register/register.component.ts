@@ -7,19 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-   latitude: number = 51.678418;
-  longitude: number = 7.809007;
-  locationChosen = false;
-
-  onChoseLocation(event){
-    console.log(event);
-    this.latitude = event.coords.lat;
-    this.longitude = event.coords.lng;
-    this.locationChosen = true;
-    /*console.log(this.locationChosen);
-    console.log(this.latitude);
-    console.log(this.longitude);*/
-  }
+agricultorProductos: any = [
+ { nombre:'Papa Capira', departamento: 'Boyaca', municipio: 'Paipa', vereda: 'Vereda1', latd:4.6560663, lngd:-74.0595918},
+ { nombre:'Papa Capira2', departamento: 'Boyaca', municipio: 'Paipa', vereda: 'Vereda2', latd:4.6708359, lngd:-74.0554836},
+ { nombre:'Papa Capira3', departamento: 'Boyaca', municipio: 'Paipa', vereda: 'Vereda3', latd:4.6904, lngd:-74.0451019},
+ { nombre:'Papa Capira4', departamento: 'Boyaca', municipio: 'Paipa', vereda: 'Vereda4', latd:4.6689621, lngd:-74.0577666}
+                           ]
+  lat: number = 4.6560663;
+  lng: number = -74.0595918;
 
   constructor() { }
 

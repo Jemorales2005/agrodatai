@@ -19,24 +19,67 @@
             <div id="registerForm">
                   <div class="registerForm-bg">
                     <div class="titRegistro">REGISTRO</div>
-                      <form>
-                        <div class="form-group">
-                          <label for="Nombre" class="titForm">PERFIL</label>
-                            <select class="form-control slct-50">
-                              <option>Productor</option>
-                              <option>Financiero</option>
-                              <option>Políticas públicas</option>
-                              <option>Proveedor</option>
-                              <option>Comercializador</option>
-                            </select>
-                        </div>
-                      </form>
-                      <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
-      <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen">
-      </agm-marker>
-      <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-      <agm-marker [latitude]="4.6670526" [longitude]="-74.0550849"></agm-marker>
-      <agm-marker [latitude]="4.6592451" [longitude]="-74.06122839999999"></agm-marker>-->
+  <form>
+  <div class="p-0 m-0">
+   <div class="form-group p-0 m-0">
+     <label for="TipoProductor" class="titForm">TIPO DE PRODUCTOR</label>
+      <select class="form-control form-control-sm w-50">
+        <option>Productor</option>
+        <option>Financiero</option>
+        <option>Políticas públicas</option>
+        <option>Proveedor</option>
+        <option>Comercializador</option>
+      </select>
+   </div>
+  </div>
+    <div class="form-row p-0 m-0">
+      <div class="form-group col-md-6">
+        <label for="Nombre" class="titForm">NOMBRE</label>
+        <input type="text" class="form-control form-control-sm" id="Nombre" placeholder="Nombre">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Apellido" class="titForm">APELLIDO</label>
+        <input type="text" class="form-control form-control-sm" id="Apellido" placeholder="Apellido">
+      </div>
+    </div>
+    <div class="form-row p-0 m-0">
+      <div class="form-group col-md-6">
+        <label for="Nombre" class="titForm">CORREO ELECTRÓNICO</label>
+        <input type="email" class="form-control form-control-sm" id="Email" placeholder="Email">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Teléfono" class="titForm">TELÉFONO</label>
+        <input type="text" class="form-control form-control-sm" id="Telefono" placeholder="Telefono">
+      </div>
+    </div>
+<div class="table-responsive-sm" style="overflow-y: scroll; max-height:80px">
+ <table class="table table-bordered table-hover table-sm">
+  <thead>
+    <tr class="table-success">
+      <th scope="col">#</th>
+      <th scope="col">QUE PRODUCE</th>
+      <th scope="col">DEPARTAMENTO</th>
+      <th scope="col">MUNICIPIO</th>
+      <th scope="col">VEREDA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let producto of agricultorProductos; let i=index;">
+    <tr>
+      <td class="counter">{{i+1}}.</td>
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.departamento}}</td>
+      <td>{{producto.municipio}}</td>
+      <td>{{producto.vereda}}</td>
+    </tr>
+    </ng-container>
+  </tbody>
+ </table>
+</div>
+
+  </form>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]=11>
+      <agm-marker *ngFor="let producto of agricultorProductos" [latitude]="producto.latd" [longitude]="producto.lngd"></agm-marker>
     </agm-map>
                   </div>
                 </div>

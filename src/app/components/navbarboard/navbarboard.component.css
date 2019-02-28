@@ -1,0 +1,68 @@
+#LogoNavBar{
+  max-width: 100px;
+}
+
+.navbar{
+        color: #FFF !important;
+        width: 100%;
+}
+
+.txtPrincipal-home {
+  font-family: "GOOGLESANS-MEDIUM";
+  font-size: 15px;
+  color: #FFF;
+}
+.nav-item{
+  font-family: "GOOGLESANS-MEDIUM";
+  font-size: 12px;
+}
+
+#navbarSupportedContent a.but {
+  background-color: #4F1087;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  padding: 7px 30px;
+  text-align: center;
+  font-size: 11px;
+}
+#navbarSupportedContent a.but:hover {
+  background-color: #1B7A6F;
+  color:white;
+  font-weight: bold;
+}
+#navbarSupportedContent a:hover{
+  color: #4F1087;
+  font-weight: bold;
+}
+.activo{
+  color: #502975;
+  font-weight: bold;
+}
+
+#navbarSupportedContent a.activo {
+  color: #4F1087;
+  font-weight: bold;
+}
+.btn-navbar{
+  background-color: #4F1087;
+  border: none;
+  color: white;
+  padding: 2px 30px;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+.btn-navbar-transparent{
+  /*background-color: #FFF;*/
+   border: none;
+  color: gray;
+  padding: 2px 30px;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}

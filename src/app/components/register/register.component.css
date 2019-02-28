@@ -1,6 +1,6 @@
 agm-map {
-  height: 35vh;
-  width: 100hw;
+  height: 15vh;
+  width: 50hw;
 }
 
 #contenedorRegister {
@@ -19,7 +19,7 @@ agm-map {
   }
 #contenedorRegister .overlay .container,
 #contenedorRegister .overlay .row  {
-height: 90%;
+height: 100%;
 }
 #contenedorRegister .overlay .container .row .central{
 position: relative;
@@ -44,7 +44,7 @@ padding: 0px 20px 0px 20px;
 #registerForm .registerForm-bg {
 float:right;
 width: 64%;
-min-height: 420px;
+min-height: 480px;
 border-top-right-radius:8px;
 border-bottom-right-radius: 8px;
 vertical-align: top;
@@ -92,6 +92,20 @@ padding: 25px;
   -ms-align-items: center;
   align-items: center;
 }
+
+td {
+    font-size: 11px;
+    color: #646A6A;
+  }
+th {
+    font-size: 11px;
+  }
+.counter{
+  text-align: center;
+  font-weight: bold;
+  color: #502975;
+}
+
 @media only screen and (max-width: 800px) {
 
   #registerForm .registerForm-bg {
@@ -111,11 +125,6 @@ padding: 25px;
   border-radius: 8px;
   margin-left: 8px;
 
-  }
-  #contenedorRegister .overlay .container .row .msgHome{
-  }
-  select {
-    width:100%;
   }
 
 }
