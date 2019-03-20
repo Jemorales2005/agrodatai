@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   password : string = null;
 
   login(){
-    console.log(this.username);
-    console.log(this.password);
+    /*console.log(this.username);
+    console.log(this.password);*/
 
     let data =
     {
@@ -24,12 +24,26 @@ export class LoginComponent implements OnInit {
       "password": this.password
     }
     this.autenticarService.ValidarUsuario(data).subscribe(res => {
-      console.log(res);
+      //console.log(res);
+      localStorage.setItem('token', res['token']);
+      //console.log(localStorage.getItem('token'));
+      localStorage.setItem('username', this.username);
+      this.router.navigate(['/board']);
 
+              /********cargamos el perfil de usuario****/
+              /*this.autenticarService.CargarPerfilUsuario(res['token']).subscribe(res => {
+
+              localStorage.setItem('datosUser', JSON.stringify(res));
+              //console.log('objetoObtenido: ', JSON.parse(localStorage.getItem('datosUser')));
+              this.router.navigate(['/board']);
+              },
+              error => {
+               console.log(error);
+              });*/
+              /*******fin cargamos el perfil de usuario*****/
      },
      error => {
        console.log(error);
-
      });
   }
 

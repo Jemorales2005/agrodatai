@@ -1,20 +1,32 @@
 #LogoNavBar{
-  max-width: 100px;
+  max-width: 130px;
+  padding-left: 2px;
 }
 
 .navbar{
         color: #FFF !important;
         width: 100%;
+        margin-top: 2px;
+        margin-bottom: 2px;
 }
 
 .txtPrincipal-home {
-  font-family: "GOOGLESANS-MEDIUM";
   font-size: 15px;
   color: #FFF;
 }
 .nav-item{
-  font-family: "GOOGLESANS-MEDIUM";
-  font-size: 12px;
+  font-family: 'Karla', sans-serif;
+  font-size: 13px;
+  padding-left: 20px;
+}
+
+#navbarSupportedContent a{
+  font-weight: bold;
+}
+
+#navbarSupportedContent a:hover{
+  color: #4F1087;
+  font-weight: bold;
 }
 
 #navbarSupportedContent a.but {
@@ -22,18 +34,13 @@
   border: none;
   color: white;
   border-radius: 30px;
-  padding: 7px 30px;
+  padding: 4px 40px;
   text-align: center;
-  font-size: 11px;
 }
 #navbarSupportedContent a.but:hover {
   background-color: #1B7A6F;
   color:white;
-  font-weight: bold;
-}
-#navbarSupportedContent a:hover{
-  color: #4F1087;
-  font-weight: bold;
+
 }
 .activo{
   color: #502975;

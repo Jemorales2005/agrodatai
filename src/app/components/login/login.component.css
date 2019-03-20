@@ -21,10 +21,9 @@ position: absolute;
 top: 100px;
 }
 #loginForm .loginForm-bg {
-font-family: "GOOGLESANS-REGULAR";
 font-weight: bold;
 text-align: left;
-width: 70%;
+width: 80%;
 background-color: white;
 color:#1B7A6F;
 padding: 40px;
@@ -43,19 +42,20 @@ float: right;
 }
 
 #loginForm .titLogin {
-  font-family: "GOOGLESANS-BOLD";
-  font-size: 17px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
   font-weight: bold;
   padding-bottom: 25px;
 }
-#loginForm .titForm {
-  font-family: "GOOGLESANS-REGULAR";
-  font-size: 11px;
+#loginForm .titForm label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
   font-weight: bold;
+  padding-left: 10px;
 }
 #loginForm .titFooterForm {
-  font-family: "GOOGLESANS-REGULAR";
-  font-size: 9px;
+  font-family: 'Karla', sans-serif;
+  font-size: 10px;
   margin: 5px;
   font-weight: bold;
   text-align: center;
@@ -78,7 +78,9 @@ border-color: #80808000
 }
 
 #loginForm .btn-enviar{
-  font-family: "GOOGLESANS-REGULAR";
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: bold;
+  font-size: 11px;
   width: 100%;
   background-color: #502975; /* Morado */
   border: none;
@@ -88,13 +90,14 @@ border-color: #80808000
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 11px;
   margin-top: 10px;
   margin-bottom: 5px;
 }
 
 #loginForm .btn-registar{
-  font-family: "GOOGLESANS-REGULAR";
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: bold;
+  font-size: 11px;
   width: 100%;
   background-color: #1B7A6F; /* Verde */
   border: none;
@@ -104,7 +107,6 @@ border-color: #80808000
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 11px;
   margin-bottom: 10px;
 }
 #loginForm .flex-c-m {
@@ -143,6 +145,9 @@ border-color: #80808000
 }
 
 @media only screen and (max-width: 800px) {
+#_msgHome{
+  display: none;
+}
 #loginForm .loginForm-bg {
 width: 100%;
 }

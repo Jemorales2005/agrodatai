@@ -8,10 +8,11 @@
       <div class="container">
         <div class="row align-items-center">
 
-          <div class="col-md-1 col-sm-0"></div>
-          <div class="col-md-10 col-sm-12 text-center central">
+          <div class="col-lg-1 col-md-1 col-sm-0"></div>
+
+          <div class="col-lg-10 col-md-10 col-sm-12 text-center central">
             <!--interno-->
-            <div class="msgHome">
+            <div id="_msgHome" class="msgHome">
                 <div class="txtHome">
                   <h2 class="txt-home">Las mejores decisiones con soluciones agropecuarias</h2>
                 </div>
@@ -19,41 +20,171 @@
             <div id="registerForm">
                   <div class="registerForm-bg">
                     <div class="titRegistro">REGISTRO</div>
-  <form>
-  <div class="p-0 m-0">
-   <div class="form-group p-0 m-0">
-     <label for="TipoProductor" class="titForm">TIPO DE PRODUCTOR</label>
-      <select class="form-control form-control-sm w-50">
-        <option>Productor</option>
-        <option>Financiero</option>
-        <option>Políticas públicas</option>
-        <option>Proveedor</option>
-        <option>Comercializador</option>
+
+<!--inicio vista 1 del registro (datos básicos del productor)-->
+<!--<form name="registroProductor">-->
+  <div *ngIf="divProduce == 0 && divCultivosProductor == 0" class="p-0 m-0">
+   <div class="form-group p-0 m-1">
+     <label for="TipoPerfil" class="titForm">TIPO DE PERFIL</label>
+      <select (change)="onChangeOptions($event,'Profile','')" class="form-control form-control-sm w-50">
+        <option selected="selected">--seleccione perfil--</option>
+        <option *ngFor="let perfiles of tiposPerfiles;" value="{{perfiles.idPerfil}}">
+          {{perfiles.nombrePerfil}}
+        </option>
       </select>
    </div>
   </div>
-    <div class="form-row p-0 m-0">
-      <div class="form-group col-md-6">
-        <label for="Nombre" class="titForm">NOMBRE</label>
-        <input type="text" class="form-control form-control-sm" id="Nombre" placeholder="Nombre">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="Apellido" class="titForm">APELLIDO</label>
-        <input type="text" class="form-control form-control-sm" id="Apellido" placeholder="Apellido">
+
+  <div *ngIf="divTipoPerfil == 1 && divProduce == 0" class="p-0 m-1">
+   <div class="form-group p-0 m-0">
+     <label for="TipoProductor" class="titForm">TIPO DE PRODUCTOR</label>
+      <select [(ngModel)]="tipoProductor" (change)="onChangeOptions($event,'Productor','')" class="form-control form-control-sm w-50">
+        <option selected="selected">--seleccione tipo de productor--</option>
+        <option *ngFor="let productores of tiposProductor;" value="{{productores.idProductor}}">
+          {{productores.nombreProductor}}
+        </option>
+      </select>
+   </div>
+  </div>
+<!--inicio formulario datos básicos productor ( persona/empresa )-->
+<div *ngIf="divTipoProductor > 0 && divTipoPerfil == 1 && divProduce == 0">
+
+  <!--nombres y apellidos si el productor es una persona-->
+  <div *ngIf="divTipoProductor == 1" class="form-row p-0 m-0">
+    <div class="form-group col-md-6">
+      <!-- [ngClass]="{'has-error': !name.valid && (name.dirty || name.touched)}"-->
+      <label for="nombres" class="control-label">NOMBRES</label>
+      <input id="nombres" name="nombres" [(ngModel)]="nombres" #regNombres="ngModel" type="text" class="form-control form-control-sm" placeholder="Nombre" required>
+      <div *ngIf="regNombres.errors && (regNombres.dirty || regNombres.touched)">
+        <span style="color:red; font-size:9px;" *ngIf="regNombres.errors.required">
+         El campo nombre es requerido
+        </span>
       </div>
     </div>
-    <div class="form-row p-0 m-0">
-      <div class="form-group col-md-6">
-        <label for="Nombre" class="titForm">CORREO ELECTRÓNICO</label>
-        <input type="email" class="form-control form-control-sm" id="Email" placeholder="Email">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="Teléfono" class="titForm">TELÉFONO</label>
-        <input type="text" class="form-control form-control-sm" id="Telefono" placeholder="Telefono">
+    <div class="form-group col-md-6">
+      <label for="apellidos" class="titForm">APELLIDOS</label>
+      <input [(ngModel)]="apellidos" type="text" class="form-control form-control-sm" placeholder="Apellidos" required>
+    </div>
+  </div>
+  <!--fin nombres y apellidos si el productor es una persona-->
+  <!--nombres si el productor es una empresa-->
+  <div *ngIf="divTipoProductor == 2" class="form-row p-0 m-0">
+    <div class="form-group col-md-12">
+      <label for="nombres" class="control-label">NOMBRE DE LA EMPRESA</label>
+      <input id="nombres" name="nombres" [(ngModel)]="nombres" #regNombres="ngModel" type="text" class="form-control form-control-sm" placeholder="Nombre" required>
+
+    <div *ngIf="regNombres.errors && (regNombres.dirty || regNombres.touched)">
+      <span style="color:red; font-size:9px;" *ngIf="regNombres.errors.required">
+        El campo nombre es requerido
+      </span>
+    </div>
+    </div>
+  </div>
+  <!--fin nombres si el productor es una empresa-->
+
+  <div class="form-row p-0 m-0">
+    <div class="form-group col-md-6">
+      <label for="identificacion" class="titForm">NÚMERO DE IDENTIFICACIÓN</label>
+      <input [(ngModel)]="identificacion" #regIdentificacion="ngModel" name="identificacion" id="identificacion" type="text" class="form-control form-control-sm" placeholder="Identificacion" required>
+      <div *ngIf="regIdentificacion.errors && (regIdentificacion.dirty || regIdentificacion.touched)">
+        <span style="color:red; font-size:9px;" *ngIf="regIdentificacion.errors.required">
+         El campo identificación es requerido
+        </span>
       </div>
     </div>
-<div class="table-responsive-sm" style="overflow-y: scroll; max-height:80px">
- <table class="table table-bordered table-hover table-sm">
+    <div class="form-group col-md-6">
+      <label for="telefono" class="titForm">TELÉFONO</label>
+      <input [(ngModel)]="telefono" #regTelefono="ngModel" name="telefono" id="telefono" type="text" class="form-control form-control-sm" placeholder="Telefono" required>
+      <div *ngIf="regTelefono.errors && (regTelefono.dirty || regTelefono.touched)">
+        <span style="color:red; font-size:9px;" *ngIf="regTelefono.errors.required">
+         El campo dirección es requerido
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row p-0 m-0">
+    <div class="form-group col-md-12">
+      <label for="direccion" class="titForm">DIRECCIÓN</label>
+      <input [(ngModel)]="direccion" #regDireccion="ngModel" name="direccion" id="direccion" type="text" class="form-control form-control-sm" placeholder="Dirección" required>
+      <div *ngIf="regDireccion.errors && (regDireccion.dirty || regDireccion.touched)">
+        <span style="color:red; font-size:9px;" *ngIf="regDireccion.errors.required">
+         El campo dirección es requerido
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row p-0 m-0">
+    <div class="form-group col-md-6">
+      <label for="email" class="titForm">CORREO ELECTRÓNICO</label>
+      <input [(ngModel)]="email" #regEmail="ngModel" name="email" id="email" type="text" class="form-control form-control-sm" placeholder="Email" email required>
+    <div *ngIf="regEmail.errors && (regEmail.dirty || regEmail.touched)">
+      <span style="color:red; font-size:9px;" *ngIf="regEmail.errors.required">
+       El campo email es requerido
+      </span>
+      <span style="color:red; font-size:9px;" *ngIf="regEmail.errors.email">
+       El email no es válido
+      </span>
+    </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="username" class="titForm">NOMBRE DE USUARIO</label>
+      <input [(ngModel)]="username" #regUsername="ngModel" name="username" id="username" type="text" class="form-control form-control-sm" placeholder="Nombre de usuario" required minlength="8">
+      <div *ngIf="regUsername.errors && (regUsername.dirty || regUsername.touched)">
+      <span style="color:red; font-size:9px;" *ngIf="regUsername.errors.required">
+       El campo nombre de usuario es requerido
+      </span>
+    </div>
+    </div>
+  </div>
+
+  <div class="form-row p-0 m-0">
+    <div class="form-group col-md-6">
+      <label for="password" class="titForm">CLAVE</label>
+      <input [(ngModel)]="password" #regClave="ngModel" name="password" id="password" type="password" class="form-control form-control-sm" placeholder="Clave" required minlength="8">
+        <div *ngIf="regClave.errors && (regClave.dirty || regClave.touched)">
+          <span style="color:red; font-size:9px;" *ngIf="regClave.errors.required">
+            El campo clave es requerido
+          </span>
+          <span style="color:red; font-size:9px;" *ngIf="regClave.errors.minlength">
+            El campo requiere mínimo 8 caracteres
+          </span>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="passwordConfirm" class="titForm">CONFIRMAR CLAVE</label>
+      <input [(ngModel)]="passwordConfirm" #regClave2="ngModel" name="passwordConfirm" id="passwordConfirm" type="password" class="form-control form-control-sm"  placeholder="Confirmar clave" required minlength="8" required minlength="8">
+        <div *ngIf="regClave2.errors && (regClave2.dirty || regClave2.touched)">
+          <span style="color:red; font-size:9px;" *ngIf="regClave2.errors.required">
+            El campo confirmar clave es requerido
+          </span>
+          <span style="color:red; font-size:9px;" *ngIf="regClave2.errors.minlength">
+            El campo requiere mínimo 8 caracteres
+          </span>
+        </div>
+    </div>
+
+  </div>
+  <button (click)="onChangeOptions('','ValidarDatosBasicosProductor','')" type="button" class="btn btn-success">  Continuar registro
+  </button>
+</div>
+<!-- fin form datos básicos del productor-->
+<!--</form>-->
+<!--fin vista 1 del registro (datos básicos del productor)-->
+<div *ngIf="divProduce == 1" class="border border-light">
+<div id="map" class="border">1</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+<button (click)="clearMarkers();" type="button" class="btn btn-outline-secondary btn-sm">
+  Eliminar Puntos
+</button>
+<button (click)="clearPolygonos();" type="button" class="btn btn-outline-secondary btn-sm">
+  Eliminar Polígonos
+</button>
+</div>
+<!--inicio tabla listado de productos que ofrece-->
+<div *ngIf="divCultivosProductor == 0" class="table-responsive-sm mt-2" style="overflow-y: scroll; max-height:130px">
+ <table class="table table-bordered table-hover table-sm w-100">
   <thead>
     <tr class="table-success">
       <th scope="col">#</th>
@@ -67,25 +198,86 @@
     <ng-container *ngFor="let producto of agricultorProductos; let i=index;">
     <tr>
       <td class="counter">{{i+1}}.</td>
-      <td>{{producto.nombre}}</td>
+      <td>
+        <i class="far fa-trash-alt" alt="Eliminar producto" (click)="onChangeOptions('','EliminarProductoOfrece', producto)">
+        </i> {{producto.nombre_producto}}
+      </td>
       <td>{{producto.departamento}}</td>
       <td>{{producto.municipio}}</td>
       <td>{{producto.vereda}}</td>
     </tr>
     </ng-container>
+    <tr>
+      <td colspan="5" align="right">
+        <button (click)="onChangeOptions('','FormProducto','')" type="button" class="btn btn-success btn-sm">
+         + Adicionar producto
+        </button>
+      </td>
+    </tr>
   </tbody>
  </table>
 </div>
+<!-- fin tabla listado de productos que ofrece-->
 
-  </form>
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]=11>
-      <agm-marker *ngFor="let producto of agricultorProductos" [latitude]="producto.latd" [longitude]="producto.lngd"></agm-marker>
-    </agm-map>
+<!--inicio creación de producto que ofrece-->
+<div *ngIf="divCultivosProductor == 1" class="bg-light mt-2">
+  <div class="form-row p-0 m-0">
+    <div class="form-group col-md-6">
+       <label for="producto" class="titForm">PRODUCTO QUE OFRECE</label>
+        <select [(ngModel)]="producto" id="producto" class="form-control form-control-sm w-100">
+          <option selected="selected">--seleccione producto--</option>
+          <option *ngFor="let productosOfrecidos of listaProductos;" value="{{productosOfrecidos.id_producto}}">
+            {{productosOfrecidos.nombre_producto}}
+          </option>
+        </select>
+     </div>
+     <div class="form-group col-md-6">
+      <label for="departamento" class="titForm">DEPARTAMENTO DONDE PRODUCE</label>
+      <select (change)="onChangeDependientes($event,'Departamento')" [(ngModel)]="departamento" class="form-control form-control-sm W-100">
+        <option selected="selected">--seleccione departamento--</option>
+        <option *ngFor="let departamento of listaDepartamentos;" value="{{departamento.cod_dpto}}">
+          {{departamento.nom_dpto}}
+        </option>
+      </select>
+    </div>
+   </div>
+   <div class="form-row p-0 m-0">
+    <div class="form-group col-md-6">
+      <label for="municipio" class="titForm">MUNICIPIO</label>
+      <select (change)="onChangeDependientes($event,'Municipios')" [(ngModel)]="municipio" class="form-control form-control-sm">
+        <option selected="selected">--seleccione municipio--</option>
+        <option *ngFor="let municipio of listaMunicipiosDepto;" value="{{municipio.id}}">
+          {{municipio.municipio}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="vereda" class="titForm">VEREDA</label>
+      <select [(ngModel)]="vereda" class="form-control form-control-sm">
+        <option selected="selected">--seleccione vereda--</option>
+        <option *ngFor="let vereda of veredas;" value="{{vereda.codigo}}">
+          {{vereda.nombre}}
+        </option>
+      </select>
+    </div>
+  </div>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button (click)="onChangeOptions('','ListarProdOfrece','')" type="button" class="btn btn-secondary"> Atras</button>
+  <button (click)="onChangeOptions('','AdicionarProducto','')" type="button" class="btn btn-success">Guardar registro</button>
+ </div>
+</div>
+<!-- fin creación de producto que ofrece-->
+
+<div *ngIf="divCultivosProductor == 0" class="btn-group" role="group" aria-label="Basic example">
+  <button (click)="onChangeOptions('','IrForm_1','')"  type="button" class="btn btn-dark">Atras</button>
+  <button (click)="realizarRegistro()" type="button" class="btn btn-success">Terminar registro</button>
+</div>
+ </div>
                   </div>
                 </div>
             <!--fin interno-->
           </div>
-          <div class="col-md-1 col-sm-0"></div>
+          <div class="col-lg-1 col-md-1 col-sm-0"></div>
 
         </div>
       </div>

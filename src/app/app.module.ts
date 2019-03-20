@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { AgmCoreModule } from '@agm/core';
+//import { AgmCoreModule } from '@agm/core';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
@@ -13,16 +13,25 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarhomeComponent } from './components/navbarhome/navbarhome.component';
 import { BoardComponent } from './components/board/board.component';
-import { NavbarboardComponent } from './components/navbarboard/navbarboard.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
+import { AutenticarService } from './services/autenticar.service';
+import { LoggedGuard } from './services/logged.guard';
+import { UnloggedGuard } from './services/unlogged.guard';
+import { environment } from '../environments/environment';
+import { SearchPipe } from './pipes/search';
+import { KeysPipe } from './pipes/keys';
+import { MockupsComponent } from './components/mockups/mockups.component';
+import { MyBarChartComponent } from './components/my-bar-chart/my-bar-chart.component';
 
 const appRoutes: Routes = [
 {path:'', component:HomeComponent},
-{path:'login', component:LoginComponent},
+{path:'login', component:LoginComponent,canActivate: [UnloggedGuard]},
 {path:'register', component:RegisterComponent},
-{path:'board', component:BoardComponent},
-{path:'dashboard', component:DashboardComponent}
+{path:'board', component:BoardComponent, canActivate: [LoggedGuard]},
+{path:'dashboard', component:DashboardComponent},
+{path:'graficos', component:MyBarChartComponent},
+{path:'mockups', component:MockupsComponent}
 ];
 
 @NgModule({
@@ -33,9 +42,12 @@ const appRoutes: Routes = [
     RegisterComponent,
     NavbarhomeComponent,
     BoardComponent,
-    NavbarboardComponent,
     DashboardComponent,
-    GraphsComponent
+    GraphsComponent,
+    SearchPipe,
+    KeysPipe,
+    MockupsComponent,
+    MyBarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -43,12 +55,12 @@ const appRoutes: Routes = [
     ChartsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBoJa91p2BgvgbJq7v-uD3asUCX1QCAMpg'
-    }),
+    RouterModule.forRoot(appRoutes,{useHash: true}),
+    /*AgmCoreModule.forRoot({
+      apiKey: environment.ApiKeyGoogleMap
+    }),*/
   ],
-  providers: [],
+  providers: [AutenticarService,LoggedGuard,UnloggedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

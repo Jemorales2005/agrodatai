@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  URLBackend: 'https://beta-dot-backend-dot-cebar-servinf-agrodat-ai-dev.appspot.com/'
+  URLBackend: 'https://backend-dot-cebar-servinf-agrodat-ai-dev.appspot.com/',
+  ApiKeyGoogleMap: 'AIzaSyBoJa91p2BgvgbJq7v-uD3asUCX1QCAMpg'
 };
 
 /*

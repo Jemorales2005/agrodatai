@@ -1,11 +1,11 @@
-agm-map {
-  height: 15vh;
+#map {
+  height: 35vh;
   width: 50hw;
 }
 
 #contenedorRegister {
   position: relative;
-  background-image: url('/assets/images/Agrodat-App-15.png');
+  /*background-image: url('/assets/images/Agrodat-App-15.jpg');*/
 
 }
 
@@ -42,32 +42,31 @@ top: 200px;
 padding: 0px 20px 0px 20px;
 }
 #registerForm .registerForm-bg {
+font-family: 'Open Sans', sans-serif;
 float:right;
 width: 64%;
 min-height: 480px;
 border-top-right-radius:8px;
 border-bottom-right-radius: 8px;
 vertical-align: top;
-font-family: "GOOGLESANS-REGULAR";
 font-weight: bold;
 text-align: left;
 background-color: white;
 color:#1B7A6F;
-padding: 25px;
+padding: 15px;
 }
 
 #registerForm .titRegistro {
-  font-family: "GOOGLESANS-MEDIUM";
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
   color:#502975;
-  font-size: 19px;
   font-weight: bold;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 #registerForm .titForm {
-  font-family: "GOOGLESANS-REGULAR";
   font-size: 11px;
   font-weight: bold;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 0px 0px 10px;
 }
 #registerForm .inputsForm{
   border-radius: 15px;
@@ -106,19 +105,27 @@ th {
   color: #502975;
 }
 
+.txt-home{
+  font-weight: bold;
+  font-size: 6vh;
+  color: #FFF !important;
+}
+
 @media only screen and (max-width: 800px) {
 
   #registerForm .registerForm-bg {
   width: 95%;
   }
 
-  h2 .txt-home{
-    font-weight:normal;
-    font-size: 5px;
+  .txt-home{
+  font-weight: normal;
+  font-size: 20px;
   }
+
   #contenedorRegister .overlay .row  {
     box-shadow: 0px;
   }
+
   #registerForm .registerForm-bg {
   width:98%;
   padding: 10px;
@@ -128,3 +135,6 @@ th {
   }
 
 }
+
+
+
