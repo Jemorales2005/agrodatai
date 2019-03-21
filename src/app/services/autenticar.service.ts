@@ -72,4 +72,22 @@ export class AutenticarService {
        return this.http.get(environment.URLBackend+'/polimunicipios/?id='+codMncp,{
     });
   }
+
+  public cargarListaVeredas(codMncpio){
+      return this.http.get(environment.URLBackend+'/veredas/?dptompio='+codMncpio,{
+    });
+  }
+
+  public cargarPoligonoVereda(codVrd){
+       return this.http.get(environment.URLBackend+'/poliveredas/?id='+codVrd,{
+    });
+  }
+
+  public ActualizarPreciosProducto(data,token){
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+        headers = new HttpHeaders().set('Authorization', 'Token ' + token);
+    return this.http.post('https://services-dot-cebar-servinf-agrodat-ai-dev.appspot.com/precios',data,{
+      headers: headers
+    });
+  }
 }

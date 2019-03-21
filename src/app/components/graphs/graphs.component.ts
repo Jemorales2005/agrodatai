@@ -1,29 +1,64 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 
 @Component({
   selector: 'app-graphs',
   templateUrl: './graphs.component.html',
   styleUrls: ['./graphs.component.css']
 })
+
 export class GraphsComponent implements OnInit {
+  @Input() ArrayData: Array<any> ;
+  @Input() ArrayLabels: Array<any> ;
+ // @Input() datosGraph: Array<any> ;
+
+  constructor(){
+
+   }
 
   ngOnInit() {
+    /*
+       console.log(this.datosGraph);
+       let _ArrayData:Array<any> = new Array(this.datosGraph.['dataArray'].length);
+     for (let i = 0; i < this.datosGraph.['dataArray'].length; i++) {
+      _ArrayData[i] = {data: new Array(this.datosGraph.['dataArray'][i].data.length), label: this.datosGraph.['dataArray'][i].label};
+        for (let j = 0; j < this.ArrayData[i].data.length; j++) {
+          _ArrayData[i].data[j] = this.ArrayData[i]['data'][j];
+        }
+     }
+     this.lineChartData = _ArrayData;
+
+     let _ArrayLabels:Array<any> = [];
+     for (let i = 0; i < this.ArrayLabels.length; i++) {
+         _ArrayLabels.push(this.ArrayLabels[i]);
+        }
+     this.lineChartLabels = _ArrayLabels;*/
+     let _ArrayData:Array<any> = new Array(this.ArrayData.length);
+     for (let i = 0; i < this.ArrayData.length; i++) {
+      _ArrayData[i] = {data: new Array(this.ArrayData[i].data.length), label: this.ArrayData[i].label};
+        for (let j = 0; j < this.ArrayData[i].data.length; j++) {
+          _ArrayData[i].data[j] = this.ArrayData[i]['data'][j];
+        }
+     }
+     this.lineChartData = _ArrayData;
+
+     let _ArrayLabels:Array<any> = [];
+     for (let i = 0; i < this.ArrayLabels.length; i++) {
+         _ArrayLabels.push(this.ArrayLabels[i]);
+        }
+     this.lineChartLabels = _ArrayLabels;
+
   }
 
 // lineChart
-  public lineChartData:Array<any> = [
-    {data: [0, 10, 20, 10, 40, 50, 20, 70, 30, 90, 80, 110], label: 'Series A'},
-    {data: [0, 11, 21, 31, 41, 51, 61, 71, 81, 91, 101, 111], label: 'Series B'},
-    {data: [0, 12, 22, 32, 42, 52, 62, 72, 82, 92, 102, 112], label: 'Series C'}
-  ];
-  public lineChartLabels:Array<any> = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto', 'Sep','Oct','Nov','Dic'];
+  public lineChartLabels:Array<any>;
+  public lineChartData :Array<any>;
   public lineChartOptions:any = {
     responsive: true
   };
   public lineChartColors:Array<any> = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
+      borderColor: 'rgba(255,0,0,0.6)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
@@ -31,7 +66,7 @@ export class GraphsComponent implements OnInit {
     },
     { // dark grey
       backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
+      borderColor: 'rgba(0,0,255,0.6)',
       pointBackgroundColor: 'rgba(77,83,96,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',

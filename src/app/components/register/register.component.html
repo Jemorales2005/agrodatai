@@ -173,7 +173,7 @@
 <!--</form>-->
 <!--fin vista 1 del registro (datos básicos del productor)-->
 <div *ngIf="divProduce == 1" class="border border-light">
-<div id="map" class="border">1</div>
+<div id="map" class="border"></div>
 <div class="btn-group" role="group" aria-label="Basic example">
 <button (click)="clearMarkers();" type="button" class="btn btn-outline-secondary btn-sm">
   Eliminar Puntos
@@ -181,6 +181,7 @@
 <button (click)="clearPolygonos();" type="button" class="btn btn-outline-secondary btn-sm">
   Eliminar Polígonos
 </button>
+<button (click)="miUbiucacion()" class="btn btn-dark">Mi ubicacion actual</button>
 </div>
 <!--inicio tabla listado de productos que ofrece-->
 <div *ngIf="divCultivosProductor == 0" class="table-responsive-sm mt-2" style="overflow-y: scroll; max-height:130px">
@@ -253,10 +254,10 @@
     </div>
     <div class="form-group col-md-6">
       <label for="vereda" class="titForm">VEREDA</label>
-      <select [(ngModel)]="vereda" class="form-control form-control-sm">
+      <select (change)="onChangeDependientes($event,'Veredas')" [(ngModel)]="vereda" class="form-control form-control-sm">
         <option selected="selected">--seleccione vereda--</option>
-        <option *ngFor="let vereda of veredas;" value="{{vereda.codigo}}">
-          {{vereda.nombre}}
+        <option *ngFor="let vereda of listaVeredasMncpio;" value="{{vereda.cod_dane}}">
+          {{vereda.nom_vereda}}
         </option>
       </select>
     </div>

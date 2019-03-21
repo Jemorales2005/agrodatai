@@ -46,8 +46,10 @@ listaProductos: any = [];
 pathPolygon : any = [];
 listaDepartamentos: any = [];
 listaMunicipiosDepto : any = [];
+listaVeredasMncpio : any = [];
 codigoDaneDepartamento: string = null;
 codigoDaneMunicipio: string = null;
+codigoDaneVereda: string = null;
 
 tiposPerfiles: any = [
  {idPerfil:1, nombrePerfil:'Productor'},
@@ -61,15 +63,6 @@ tiposProductor: any = [
  {idProductor:1, nombreProductor:'Persona'},
  {idProductor:2, nombreProductor:'Empresa'}
                       ]
-
- veredas: any = [
- {codigo:'05001001', nombre:'AGUAS FRIAS'},
- {codigo:'05001003', nombre:'ALTAVISTA CENTRAL'},
- {codigo:'05001003', nombre:'BARRO BLANCO'},
- {codigo:'05001004', nombre:'BOQUERON'},
- {codigo:'05001005', nombre:'BUGA PATIO BONITO'},
- {codigo:'05001006', nombre:'EL ASTILLERO'}
-                ]
 
   constructor(private router: Router, private autenticarService: AutenticarService) { }
 
@@ -126,6 +119,40 @@ tiposProductor: any = [
                         //centramos el mapa con la ubicacion del polygon y ajustamos el zoom
                         this.centrarMapa(this.pathPolygon[0],7);
                       /*Fin evento Google Maps dibujar polígono departamento*/
+
+              /**cargamos el select de veredas del municipio seleccionado**/
+              this.autenticarService.cargarListaVeredas(this.codigoDaneMunicipio).subscribe(res => {
+              this.listaVeredasMncpio=res['rows'];
+              //console.log(res['rows']);
+               },
+               error => {
+                 console.log(error);
+               });
+              /**fin cargamos el select de veredas del municipio seleccionado*/
+        },
+        error => {
+                 console.log(error);
+        });
+
+      break;
+      case 'Veredas':
+      this.codigoDaneVereda=event.target.value;
+      //console.log('CodVrd> '+this.codigoDaneVereda);
+         /*cargamos polígono de la vereda*/
+        this.autenticarService.cargarPoligonoVereda(this.codigoDaneVereda)
+        .subscribe(res => {
+            //console.log(res);
+            /*Inicio evento Google Maps dibujar polígono departamento*/
+                        //var dep = this.listaDepartamentos.find(o=>o.cod_dpto==this.departamento);
+                        //obtenemos el array de coordenadas del polygono
+                        this.limpiarCoordenadas(res['rows']);
+                        //eliminamos los polygons que esten dibujados
+                        this.clearPolygonos();
+                        //dibujamos el polygon del departamento seleccionado
+                        this.createPolygon(this.pathPolygon);
+                        //centramos el mapa con la ubicacion del polygon y ajustamos el zoom
+                        this.centrarMapa(this.pathPolygon[0],10);
+                      /*Fin evento Google Maps dibujar polígono departamento*/
         },
         error => {
                  console.log(error);
@@ -147,7 +174,7 @@ tiposProductor: any = [
       case 'ValidarDatosBasicosProductor':
        //validamos form datos básicos
        //if(this.nombres=='' || this.nombres==null){ alert('no ha ingresado el nombre');}
-        console.log(this.nombres);
+        //console.log(this.nombres);
        //fin validamos datos basicos
         this.divProduce = 1;
        //cargamos el visor de google Maps
@@ -187,8 +214,8 @@ tiposProductor: any = [
         var prod = this.listaProductos.find(o=>o.id_producto==this.producto);
         var dep = this.listaDepartamentos.find(o=>o.cod_dpto==this.departamento);
         var mncp = this.listaMunicipiosDepto.find(o=>o.id==this.municipio);
-        var vrd = this.veredas.find(o=>o.codigo==this.vereda);
-        this.agricultorProductos.unshift( {id_producto:this.producto, nombre_producto:prod['nombre_producto'], iddepartamento:this.departamento, departamento:dep['nom_dpto'], idmunicipio:this.municipio, municipio:mncp['municipio'],  codigo_dane:this.vereda, vereda:vrd['nombre'], id_productor:0, latd:4.6560663, lngd:-74.0595918});
+        var vrd = this.listaVeredasMncpio.find(o=>o.cod_dane==this.vereda);
+        this.agricultorProductos.unshift( {id_producto:this.producto, nombre_producto:prod['nombre_producto'], iddepartamento:this.departamento, departamento:dep['nom_dpto'], idmunicipio:this.municipio, municipio:mncp['municipio'],  codigo_dane:this.vereda, vereda:vrd['nom_vereda'], id_productor:0, latd:4.6560663, lngd:-74.0595918});
         this.divCultivosProductor = 0;
         //console.log(this.agricultorProductos);
         //autos.push([ "Precio": precioDescuento ]);
@@ -204,7 +231,13 @@ tiposProductor: any = [
       break;
     }
   }
-
+  miUbiucacion(){
+     if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position){
+      console.log(position);
+    });
+  }
+  }
   realizarRegistro(){
 
    if(this.agricultorProductos.length>0){  /*debe haber ingresado al menos un producto registrado para ofrecer*/
@@ -391,7 +424,7 @@ tiposProductor: any = [
 
   /*****************/
 
-    }, 50);  //fin time out
+    }, 50);  //fin timeOut
 
   }//fin initmap
 

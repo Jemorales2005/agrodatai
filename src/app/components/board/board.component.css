@@ -216,6 +216,15 @@ ul .children{
   background-color: #00A887;
   color: #00FFE0;
 }
+.btn-periodo{
+  color: #00A887;
+  background-color: #00FFE0;
+  font-size: 12px;
+}
+ .active, .btn-periodo:hover, .btn-periodo:active, .btn-periodo:focus{
+  background-color: #00A887;
+  color: #00FFE0;
+}
 .smb-22{
 -webkit-box-shadow: 10px 10px 22px -5px rgba(84,83,84,1);
 -moz-box-shadow: 10px 10px 22px -5px rgba(84,83,84,1);

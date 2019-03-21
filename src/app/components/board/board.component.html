@@ -12,7 +12,7 @@
             <ul class="navbar-primary-menu">
             <ng-container *ngFor="let opcionesMenu of menuLateral; let i = index">
               <li>
-                <a class="nav-link">
+                <a class="nav-link" routerLink="/board">
                   <i class="{{opcionesMenu.icono}} mr-1"></i>
                   {{opcionesMenu.titulo}}
                   <!--<i class="fas fa-pen f-r"></i>-->
@@ -20,7 +20,7 @@
                   <!--inicio submenu-->
                   <ul class="children" *ngIf="opcionesMenu.submenu>0">
                     <ng-container *ngFor="let subitems of opcionesMenu.items_sub">
-                    <li><a href="#"><i class="far fa-arrow-alt-circle-right f-r"></i>{{subitems.titulo_sub}}</a></li>
+                    <li><a href="#" routerLink="/board"><i class="far fa-arrow-alt-circle-right f-r"></i>{{subitems.titulo_sub}}</a></li>
                     </ng-container>
                   </ul>
                   <!--fin submenu-->
@@ -54,7 +54,7 @@
       <div class="container-fluid p-0 m-0">
           <!--inicio row precios-->
           <h1 class="titCategoria p-2">Precios</h1>
-          <div class="row p-2 pr-0">
+          <div class="row p-0">
               <!--ini card Precios-->
               <ng-container *ngFor="let produce of produceUsuario;">
                 <div class="col-sm-12 col-md-6 col-lg-6 pb-3">
@@ -73,19 +73,45 @@
                           <div class="col-sm-0 col-md-3 col-lg-6">
                           </div>
                           <div class="btn-group col-sm-12 col-md-9 col-lg-6 mb-0 mt-0" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-sm bg-green1">Corriente</button>
-                                <button type="button" class="btn btn-sm bg-green2">Constante</button>
+                            <button (click)="actualizarTipoPrecio(0)" type="button"
+                                [class.bg-green1]="tipoPrecios === 0"
+                                [class.bg-green2]="tipoPrecios === 1"
+                                 class="btn btn-sm">Corriente</button>
+                            <button (click)="actualizarTipoPrecio(1)" type="button"
+                                [class.bg-green1]="tipoPrecios === 1"
+                                [class.bg-green2]="tipoPrecios === 0"
+                                class="btn btn-sm">Constante</button>
                           </div>
                         </div>
                      </div>
-                     <p class="card-text pt-2">
-                       <app-graphs></app-graphs>
-                     </p>
+                     <div class="card-text pt-2">
+                       <div *ngIf="produce.transable==1" class="container">
+                         <div class="row">
+                           <div class="col-sm-12 col-md-6 col-lg-6 p-0">
+                             <div class="text-center p-4"><strong>NAL.Bolsa de Valores de Colombia (BVC)</strong></div>
+                             <app-graphs [ArrayData]='dataArray' [ArrayLabels]='dataLabels'></app-graphs>
+                           </div>
+                           <div class="col-sm-12 col-md-6 col-lg-6 p-0">
+                            <div class="text-center p-4"><strong>INT. Chicago Mercantile Exchange (CME)</strong></div>
+                             <app-graphs [ArrayData]='dataArrayCME' [ArrayLabels]='dataLabels'></app-graphs>
+                           </div>
+                         </div>
+                       </div>
+                       <div *ngIf="produce.transable==0" class="container">
+                         <div class="row">
+                           <div class="col-sm-12 col-md-12 col-lg-12 p-0">
+                             <app-graphs [ArrayData]='dataArray' [ArrayLabels]='dataLabels'></app-graphs>
+                           </div>
+                         </div>
+                       </div>
+                       <!-- <app-graphs [datosGraph]='dataGraph'></app-graphs> -->
+                     </div>
                     </div>
                     <div class="card-footer">
-                      <button type="button" class="btn btn-sm mr-1 bg-green1">Mes</button>
-                      <button type="button" class="btn btn-sm mr-1 bg-green2">Semana</button>
-                      <button type="button" class="btn btn-sm mr-1 bg-green2">Día</button>
+                      <button (click)="ActualizarPrecios('mensual',produce.id_producto)" type="button" class="btn btn-sm mr-1 btn-periodo"
+                      [class.active]="rangoConsulta == 'mensual'">Mes</button>
+                      <button (click)="ActualizarPrecios('semanal',produce.id_producto)" type="button" class="btn btn-sm mr-1 btn-periodo">Semana</button>
+                      <button (click)="ActualizarPrecios('anual',produce.id_producto)"type="button" class="btn btn-sm mr-1 btn-periodo">Año</button>
                     </div>
                   </div>
                 </div>
@@ -111,7 +137,7 @@
 
                     <div class="card-body">
                      <p class="card-text pt-2">
-                       <app-graphs></app-graphs>
+                       <!-- <app-graphs></app-graphs> -->
                      </p>
                     </div>
                     <div class="card-footer bg-light">
