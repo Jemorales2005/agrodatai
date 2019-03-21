@@ -41,9 +41,10 @@ divTipoPerfil: number = 0;
 divTipoProductor: number = 0;
 divProduce: number = 0;
 divCultivosProductor: number = 0;  //0:listar  1:Adicionar
-agricultorProductos: any = []
+agricultorProductos: any = [];
 listaProductos: any = [];
 pathPolygon : any = [];
+pathMiUbicacion : any = [];
 listaDepartamentos: any = [];
 listaMunicipiosDepto : any = [];
 listaVeredasMncpio : any = [];
@@ -231,14 +232,7 @@ tiposProductor: any = [
       break;
     }
   }
-  miUbiucacion(){
-     if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position){
-      console.log(position);
-    });
-  }
-  }
-  realizarRegistro(){
+   realizarRegistro(){
 
    if(this.agricultorProductos.length>0){  /*debe haber ingresado al menos un producto registrado para ofrecer*/
     let dataEmpresa =
@@ -323,6 +317,17 @@ tiposProductor: any = [
                           }
                         }
         }
+  miUbiucacion(){
+     if (navigator.geolocation) {
+     //this.pathMiUbicacion = [];
+    navigator.geolocation.getCurrentPosition(function(position){
+      //this.pathMiUbicacion.push({lat:position.coords.latitude, lng:position.coords.longitude});
+       alert('Ubicacion  lat:'+position.coords.latitude+' lng:'+position.coords.longitude);
+       //console.log(this.pathMiUbicacion);
+       //this.addMarker(this.pathMiUbicacion);
+    });
+  }
+  }
         // crear markers con opcion de arrastrar y de centrado de mapa automàtico
         addMarker(location) {
         var marker = new google.maps.Marker({
