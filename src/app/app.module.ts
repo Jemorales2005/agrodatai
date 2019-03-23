@@ -13,7 +13,6 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarhomeComponent } from './components/navbarhome/navbarhome.component';
 import { BoardComponent } from './components/board/board.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { AutenticarService } from './services/autenticar.service';
 import { LoggedGuard } from './services/logged.guard';
@@ -21,17 +20,13 @@ import { UnloggedGuard } from './services/unlogged.guard';
 import { environment } from '../environments/environment';
 import { SearchPipe } from './pipes/search';
 import { KeysPipe } from './pipes/keys';
-import { MockupsComponent } from './components/mockups/mockups.component';
-import { MyBarChartComponent } from './components/my-bar-chart/my-bar-chart.component';
 
 const appRoutes: Routes = [
 {path:'', component:HomeComponent},
+{path:'home', component:HomeComponent},
 {path:'login', component:LoginComponent,canActivate: [UnloggedGuard]},
 {path:'register', component:RegisterComponent},
 {path:'board', component:BoardComponent, canActivate: [LoggedGuard]},
-{path:'dashboard', component:DashboardComponent},
-{path:'graficos', component:MyBarChartComponent},
-{path:'mockups', component:MockupsComponent}
 ];
 
 @NgModule({
@@ -42,12 +37,9 @@ const appRoutes: Routes = [
     RegisterComponent,
     NavbarhomeComponent,
     BoardComponent,
-    DashboardComponent,
     GraphsComponent,
     SearchPipe,
-    KeysPipe,
-    MockupsComponent,
-    MyBarChartComponent
+    KeysPipe
   ],
   imports: [
     BrowserModule,

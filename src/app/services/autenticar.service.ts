@@ -86,7 +86,7 @@ export class AutenticarService {
   public ActualizarPreciosProducto(data,token){
     let headers = new HttpHeaders().set('Content-Type','application/json');
         headers = new HttpHeaders().set('Authorization', 'Token ' + token);
-    return this.http.post('https://services-dot-cebar-servinf-agrodat-ai-dev.appspot.com/precios',data,{
+    return this.http.post('https://services-dot-cebar-servinf-agrodat-ai-dev.appspot.com/precios/',data,{
       headers: headers
     });
   }

@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
 private map = null;
 public markers : any = [];
 public polygono;
+public marker;
 public drawingManager;
 public drawingpolygono;
 public polygon;
@@ -319,30 +320,31 @@ tiposProductor: any = [
         }
   miUbiucacion(){
      if (navigator.geolocation) {
-     //this.pathMiUbicacion = [];
-    navigator.geolocation.getCurrentPosition(function(position){
-      //this.pathMiUbicacion.push({lat:position.coords.latitude, lng:position.coords.longitude});
+       navigator.geolocation.getCurrentPosition(function(position){
+       var miUbicacion = {lat: position.coords.latitude, lng: position.coords.longitude};
+       //var miUbicacion = {lat: 4.6713254, lng: -74.05937569999999};
+       //{lat: 4.6713254, lng: -74.05937569999999}
        alert('Ubicacion  lat:'+position.coords.latitude+' lng:'+position.coords.longitude);
-       //console.log(this.pathMiUbicacion);
-       //this.addMarker(this.pathMiUbicacion);
+       console.log(miUbicacion);
+       this.addMarker(miUbicacion);
     });
   }
   }
         // crear markers con opcion de arrastrar y de centrado de mapa automàtico
         addMarker(location) {
-        var marker = new google.maps.Marker({
+        this.marker = new google.maps.Marker({
           position: location,
           map: this.map
         });
         //permitimos que el marker se pueda arrastrar
-        marker.setDraggable(true);
+        this.marker.setDraggable(true);
         //eliminamos los puntos creados
         this.clearMarkers();
         //adicionamos el nuevo marker
-        this.markers.push(marker);
+        this.markers.push(this.marker);
         //al dar clic y crear un marker el mapa se centra
-        this.map.panTo(marker.getPosition());
-        console.log(marker.getPosition());
+        this.map.panTo(this.marker.getPosition());
+        console.log(this.marker.getPosition());
       }
       // Remover markers
        clearMarkers() {
@@ -392,6 +394,9 @@ tiposProductor: any = [
         point.map.addListener('click', function(event) {
         point.addMarker(event.latLng);
         });
+
+        //var miUbicacion = {lat: 4.6713254, lng: -74.05937569999999};
+        //point.addMarker(miUbicacion);
 
 
 
