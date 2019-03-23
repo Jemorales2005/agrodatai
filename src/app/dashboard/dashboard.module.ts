@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PreciosComponent } from './precios/precios.component';
 import { MejorOpcionVentaComponent } from './mejor-opcion-venta/mejor-opcion-venta.component';
@@ -17,7 +18,11 @@ const dashboardRoutes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+     RouterModule.forChild(dashboardRoutes)
+  ],
+  exports: [
+    PreciosComponent
   ],
   declarations: [PreciosComponent, MejorOpcionVentaComponent, ProduccionComponent, ClimaComponent, FinancieroComponent]
 })
