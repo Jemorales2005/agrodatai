@@ -24,9 +24,7 @@ export class LoginComponent implements OnInit {
       "password": this.password
     }
     this.autenticarService.ValidarUsuario(data).subscribe(res => {
-      //console.log(res);
       localStorage.setItem('token', res['token']);
-      //console.log(localStorage.getItem('token'));
       localStorage.setItem('username', this.username);
       this.router.navigate(['/board']);
 

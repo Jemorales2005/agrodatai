@@ -95,15 +95,10 @@ export class BoardComponent implements OnInit {
         /* $(window).click(function () {
         alert('ok');
         });*/
-        //localStorage.removeItem('username');
-        //localStorage.removeItem('token');
   }
 
   logout(){
-      //console.log(localStorage.getItem('token'));
-
       this.autenticarService.CerrarSesion(localStorage.getItem('token')).subscribe(res => {
-      //console.log(res);
       localStorage.removeItem('username');
       localStorage.removeItem('token');
        this.router.navigate(['']);

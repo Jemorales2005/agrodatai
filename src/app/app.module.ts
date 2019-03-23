@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 //import { AgmCoreModule } from '@agm/core';
 import { ChartsModule } from 'ng2-charts';
 /////
-import { DashboardModule } from './dashboard/dashboard.module';
+//import { DashboardModule } from './dashboard/dashboard.module';
 /////
 
 import { AppComponent } from './app.component';
@@ -30,7 +30,8 @@ const appRoutes: Routes = [
 {path:'login', component:LoginComponent,canActivate: [UnloggedGuard]},
 {path:'register', component:RegisterComponent},
 {path:'board', component:BoardComponent, canActivate: [LoggedGuard]},
-{path: 'dashboard', loadChildren: './dashboard/dashboard.module'}
+//{path: 'dashboard', loadChildren: './dashboard/dashboard.module'},
+{path: '**',redirectTo: 'home'}
 ];
 
 @NgModule({
@@ -48,7 +49,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     ///
-    DashboardModule,
+    //DashboardModule,
     ////
     FormsModule,
     ChartsModule,
