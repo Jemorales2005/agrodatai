@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.autenticarService.ValidarUsuario(data).subscribe(res => {
       localStorage.setItem('token', res['token']);
       localStorage.setItem('username', this.username);
-      this.router.navigate(['/board']);
+      this.router.navigate(['/dashboard']);
 
               /********cargamos el perfil de usuario****/
               /*this.autenticarService.CargarPerfilUsuario(res['token']).subscribe(res => {

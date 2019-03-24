@@ -101,8 +101,8 @@ float:right;
 }
 .navbar-primary-menu li {
   background-color: #7249AC;
-  margin-left:9px;
-  margin-right: 9px;
+  margin-left: 7px;
+  margin-right: 7px;
   margin-bottom: 3px;
   padding:0;
   list-style: none;
@@ -167,10 +167,6 @@ ul .children{
 .ta-right{
   text-align: right !important;
 }
-#textNav{
-font-size: 12px;
-color: #88878A;
-}
 .titPrincipal{
   font-size: 40px;
   font-weight: bold;
@@ -188,14 +184,14 @@ color: #88878A;
   font-weight: bold;
   color: #066D53;
   background-color: #00FFE0;
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
 }
 .styFooterCard{
   font-size: 13px;
   font-weight: bold;
   color: #066D53;
   background-color: #FFF !important;
-  border-radius: 0px 0px 25px 25px;
+  border-radius: 0px 0px 20px 20px;
 }
 .bg-green1{
   background-color: #00A887;
@@ -203,16 +199,37 @@ color: #88878A;
   font-weight: bold;
   font-size: 12px;
 }
+.bg-green1:hover {
+  color: #00A887;
+  background-color: #00FFE0;
+}
 .bg-green2{
   color: #00A887;
   background-color: #00FFE0;
   font-size: 12px;
 }
-.smb-42{
--webkit-box-shadow: 10px 10px 42px -5px rgba(84,83,84,1);
--moz-box-shadow: 10px 10px 42px -5px rgba(84,83,84,1);
-box-shadow: 10px 10px 42px -5px rgba(84,83,84,1);
-border-radius: 25px 25px 0px 0px;
+.bg-green2:hover {
+  background-color: #00A887;
+  color: #00FFE0;
+}
+.bg-green1:active, .bg-green2:active {
+  background-color: #00A887;
+  color: #00FFE0;
+}
+.btn-periodo{
+  color: #00A887;
+  background-color: #00FFE0;
+  font-size: 12px;
+}
+ .active, .btn-periodo:hover, .btn-periodo:active, .btn-periodo:focus{
+  background-color: #00A887;
+  color: #00FFE0;
+}
+.smb-22{
+-webkit-box-shadow: 10px 10px 22px -5px rgba(84,83,84,1);
+-moz-box-shadow: 10px 10px 22px -5px rgba(84,83,84,1);
+box-shadow: 10px 10px 22px -5px rgba(84,83,84,1);
+border-radius: 20px 20px 20px 20px;
 }
 
 small{

@@ -1,3 +1,310 @@
-<p>
-  mejor-opcion-venta works!
-</p>
+<a name="opciones"></a>
+            <h1 class="titCategoria">Mejor opción de venta</h1>
+              <div class="row">
+                <!--filtros-->
+                <div class="container">
+                  <div class="row pb-5 pt-3">
+                    <form class="form-inline">
+                        <div class="form-group mb-2 pl-2 pr-2">
+                          <label for="Origen">Origen: </label>
+                          <select class="form-control form-control-sm">
+                            <option>Origen 1</option>
+                            <option>Origen 2</option>
+                            <option>Origen 3</option>
+                          </select>
+                        </div>
+                        <div class="form-group mb-2 pl-2 pr-2">
+                          <label for="Destino">Destino: </label>
+                          <select class="form-control form-control-sm">
+                            <option>Destino 1</option>
+                            <option>Destino 2</option>
+                            <option>Destino 3</option>
+                          </select>
+                        </div>
+                        <div class="form-group mb-2 pl-2 pr-2">
+                          <label for="Producto">Producto: </label>
+                          <select class="form-control form-control-sm">
+                            <option>Producto 1</option>
+                            <option>Producto 2</option>
+                            <option>Producto 3</option>
+                          </select>
+                        </div>
+                        <div class="form-group mb-2 pl-2 pr-2">
+                          <button type="submit" class="btn btn-sm mr-1 bg-green1">Limpiar Búsqueda</button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+                <!--fin filtros-->
+                <!--ini card-->
+                <div class="col-sm-12 col-md-6 col-lg-6 pb-2 pt-2">
+                  <div class="card smb-42">
+                    <div class="card-header styHeaderCard">
+                      <i class="fa fa-home mr-1"></i>
+                      Pronóstico: Papa Criolla -(Boyacá - Bogotá)
+                      <i class="fas fa-pen" style="float: right;"></i>
+                    </div>
+
+                    <div class="card-body">
+
+                     <div class="container pt-2">
+                      <div class="row">
+                        <div class="col-sm-7 col-md-7 col-lg-7 pl-0 pr-1">
+                             <table class="tableSup" cellspacing="10" cellpadding="2">
+                              <tr>
+                                <td>Origen: Boyacá, Paipa</td>
+                                <td>Distancia(km):350 km</td>
+                              </tr>
+                              <tr>
+                                <td>Destino: Bogotá</td>
+                                <td>Precio Neto: $400.000 COL</td>
+                              </tr>
+                              <tr>
+                                <td>Producto: Papa Criolla</td>
+                                <td></td>
+                              </tr>
+                             </table>
+                              <p class="card-text pt-0">
+                               <!--grafico-->
+                              </p>
+                        </div>
+                        <div class="col-sm-5 col-md-5 col-lg-5 pl-1 pr-0">
+
+                          <div id="map" class="border">ruta google</div>
+                        </div>
+                      </div>
+                      <div class="row pb-5">
+                        <button type="button" class="btn btn-sm mr-1 bg-green1">Mes</button>
+                        <button type="button" class="btn btn-sm mr-1 bg-green2">Semana</button>
+                        <button type="button" class="btn btn-sm mr-1 bg-green2">Día</button>
+                      </div>
+                     </div>
+
+
+                     <div class="container">
+                      <div class="row">
+                         <div class="col-sm-6 col-md-6 col-lg-6 pl-0 pr-0">
+                            <div class="table-responsive-sm">
+                              <legend>Mejor precio por ciudad</legend>
+                              <table class="table tablaDatos">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col"></th>
+                                      <th scope="col">Ciudad</th>
+                                      <th scope="col">Mejor precio</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>1.</td>
+                                      <td>Bogotá</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>2.</td>
+                                      <td>Itaguí</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>3.</td>
+                                      <td>Cali</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>4.</td>
+                                      <td>Cúcuta</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>5.</td>
+                                      <td>Bogotá</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                         </div>
+                         <div class="col-sm-6 col-md-6 col-lg-6 pl-0 pr-0">
+                          <div class="table-responsive-sm">
+                              <legend>Mejor precio por central</legend>
+                              <table class="table tablaDatos">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col"></th>
+                                      <th scope="col">Central</th>
+                                      <th scope="col">Mayor precio</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>1.</td>
+                                      <td>CORABASTOS</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>2.</td>
+                                      <td>ASOABASTOS</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>3.</td>
+                                      <td>CAVA SA</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>4.</td>
+                                      <td>CENABASTOS</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>5.</td>
+                                      <td>CODABAS</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                         </div>
+                      </div>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+                <!--fin card-->
+
+                 <!--ini card-->
+                <div class="col-sm-12 col-md-6 col-lg-6 pb-2 pt-2">
+                  <div class="card smb-42">
+                    <div class="card-header styHeaderCard">
+                      <i class="fa fa-home mr-1"></i>
+                      Pronóstico: Papa Criolla -(Boyacá - Bogotá)
+                      <i class="fas fa-pen" style="float: right;"></i>
+                    </div>
+
+                    <div class="card-body">
+
+                     <div class="container pt-2">
+                      <div class="row">
+                        <div class="col-sm-7 col-md-7 col-lg-7 pl-0 pr-1">
+                             <table class="tableSup" cellspacing="10" cellpadding="2">
+                              <tr>
+                                <td>Origen: Boyacá, Paipa</td>
+                                <td>Distancia(km):350 km</td>
+                              </tr>
+                              <tr>
+                                <td>Destino: Bogotá</td>
+                                <td>Precio Neto: $400.000 COL</td>
+                              </tr>
+                              <tr>
+                                <td>Producto: Papa Criolla</td>
+                                <td></td>
+                              </tr>
+                             </table>
+                              <p class="card-text pt-0">
+                               <!--grafico-->
+                              </p>
+                        </div>
+                        <div class="col-sm-5 col-md-5 col-lg-5 pl-1 pr-0">
+                          <div id="map" class="border">ruta google</div>
+                        </div>
+                      </div>
+                      <div class="row pb-5">
+                        <button type="button" class="btn btn-sm mr-1 bg-green1">Mes</button>
+                        <button type="button" class="btn btn-sm mr-1 bg-green2">Semana</button>
+                        <button type="button" class="btn btn-sm mr-1 bg-green2">Día</button>
+                      </div>
+                     </div>
+
+
+                     <div class="container">
+                      <div class="row">
+                         <div class="col-sm-6 col-md-6 col-lg-6 pl-0 pr-0">
+                            <div class="table-responsive-sm">
+                              <legend>Mejor precio por ciudad</legend>
+                              <table class="table tablaDatos">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col"></th>
+                                      <th scope="col">Ciudad</th>
+                                      <th scope="col">Mejor precio</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>1.</td>
+                                      <td>Bogotá</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>2.</td>
+                                      <td>Itaguí</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>3.</td>
+                                      <td>Cali</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>4.</td>
+                                      <td>Cúcuta</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>5.</td>
+                                      <td>Bogotá</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                         </div>
+                         <div class="col-sm-6 col-md-6 col-lg-6 pl-0 pr-0">
+                          <div class="table-responsive-sm">
+                              <legend>Mejor precio por central</legend>
+                              <table class="table tablaDatos">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col"></th>
+                                      <th scope="col">Central</th>
+                                      <th scope="col">Mayor precio</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>1.</td>
+                                      <td>CORABASTOS</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>2.</td>
+                                      <td>ASOABASTOS</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>3.</td>
+                                      <td>CAVA SA</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>4.</td>
+                                      <td>CENABASTOS</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                    <tr>
+                                      <td>5.</td>
+                                      <td>CODABAS</td>
+                                      <td>1000000</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                         </div>
+                      </div>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+                <!--fin card-->
+
+              </div>

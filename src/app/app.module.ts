@@ -1,15 +1,14 @@
+import { routes } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+//import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 //import { AgmCoreModule } from '@agm/core';
 import { ChartsModule } from 'ng2-charts';
-/////
-//import { DashboardModule } from './dashboard/dashboard.module';
-/////
 
+/*components*/
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,22 +16,22 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavbarhomeComponent } from './components/navbarhome/navbarhome.component';
 import { BoardComponent } from './components/board/board.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+/*servicios*/
 import { AutenticarService } from './services/autenticar.service';
 import { LoggedGuard } from './services/logged.guard';
 import { UnloggedGuard } from './services/unlogged.guard';
 import { environment } from '../environments/environment';
 import { SearchPipe } from './pipes/search';
 import { KeysPipe } from './pipes/keys';
+import { DefaultComponent } from './dashboard/default/default.component';
+import { PreciosComponent } from './dashboard/precios/precios.component';
+import { ClimaComponent } from './dashboard/clima/clima.component';
+import { FinancieroComponent } from './dashboard/financiero/financiero.component';
+import { ProduccionComponent } from './dashboard/produccion/produccion.component';
+import { MejorOpcionVentaComponent } from './dashboard/mejor-opcion-venta/mejor-opcion-venta.component';
 
-const appRoutes: Routes = [
-{path:'', component:HomeComponent},
-{path:'home', component:HomeComponent},
-{path:'login', component:LoginComponent,canActivate: [UnloggedGuard]},
-{path:'register', component:RegisterComponent},
-{path:'board', component:BoardComponent, canActivate: [LoggedGuard]},
-//{path: 'dashboard', loadChildren: './dashboard/dashboard.module'},
-{path: '**',redirectTo: 'home'}
-];
 
 @NgModule({
   declarations: [
@@ -44,18 +43,22 @@ const appRoutes: Routes = [
     BoardComponent,
     GraphsComponent,
     SearchPipe,
-    KeysPipe
+    KeysPipe,
+    DashboardComponent,
+    DefaultComponent,
+    PreciosComponent,
+    ClimaComponent,
+    FinancieroComponent,
+    ProduccionComponent,
+    MejorOpcionVentaComponent
   ],
   imports: [
     BrowserModule,
-    ///
-    //DashboardModule,
-    ////
     FormsModule,
     ChartsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes,{useHash: true}),
+    routes,
     /*AgmCoreModule.forRoot({
       apiKey: environment.ApiKeyGoogleMap
     }),*/
