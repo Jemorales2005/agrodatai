@@ -19,6 +19,8 @@ public marker;
 public drawingManager;
 public drawingpolygono;
 public polygon;
+public myLatitud : number;
+public myLongitud : number;
 lat: number = 4.6560663;
 lng: number = -74.0595918;
 ////datos basicos productor/////
@@ -318,18 +320,7 @@ tiposProductor: any = [
                           }
                         }
         }
-  miUbiucacion(){
-     if (navigator.geolocation) {
-       navigator.geolocation.getCurrentPosition(function(position){
-       var miUbicacion = {lat: position.coords.latitude, lng: position.coords.longitude};
-       //var miUbicacion = {lat: 4.6713254, lng: -74.05937569999999};
-       //{lat: 4.6713254, lng: -74.05937569999999}
-       alert('Ubicacion  lat:'+position.coords.latitude+' lng:'+position.coords.longitude);
-       console.log(miUbicacion);
-       this.addMarker(miUbicacion);
-    });
-  }
-  }
+
         // crear markers con opcion de arrastrar y de centrado de mapa automàtico
         addMarker(location) {
         this.marker = new google.maps.Marker({
@@ -344,7 +335,7 @@ tiposProductor: any = [
         this.markers.push(this.marker);
         //al dar clic y crear un marker el mapa se centra
         this.map.panTo(this.marker.getPosition());
-        console.log(this.marker.getPosition());
+        //console.log(this.marker.getPosition());
       }
       // Remover markers
        clearMarkers() {
@@ -376,6 +367,18 @@ tiposProductor: any = [
         this.map.setZoom(paramZoom);
         this.map.setCenter(paramLtLng);
       }
+
+    miUbiucacion(){
+      let apuntador = this;
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var lat = position.coords.latitude;
+          var lng = position.coords.longitude;
+          var coordenadas = new google.maps.LatLng(lat, lng);
+          apuntador.addMarker(coordenadas);
+        });
+      }
+  }
      /***fin funciones de dibujo google maps**/
 
   initMap() {

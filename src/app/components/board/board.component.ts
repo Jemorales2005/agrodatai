@@ -92,6 +92,7 @@ export class BoardComponent implements OnInit {
    }
 
   ngOnInit() {
+
         /* $(window).click(function () {
         alert('ok');
         });*/
@@ -99,8 +100,8 @@ export class BoardComponent implements OnInit {
 
   logout(){
       this.autenticarService.CerrarSesion(localStorage.getItem('token')).subscribe(res => {
-      localStorage.removeItem('username');
-      localStorage.removeItem('token');
+      //localStorage.removeItem('username');
+      //localStorage.removeItem('token');
       localStorage.clear();
        this.router.navigate(['']);
      },

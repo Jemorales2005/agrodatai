@@ -197,18 +197,23 @@ color: #88878A;
   background-color: #FFF !important;
   border-radius: 0px 0px 25px 25px;
 }
-.bg-green1{
-  background-color: #00A887;
-  color: #00FFE0;
-  font-weight: bold;
-  font-size: 12px;
-}
-.bg-green2{
+.btn-card {
   color: #00A887;
   background-color: #00FFE0;
   font-size: 12px;
+  font-weight: bold;
 }
-.smb-42{
+.btn-card:hover {
+  color:#00FFE0;
+  background-color: #00A887;
+}
+
+.btn-card-active {
+  color:#00FFE0;
+  background-color: #00A887 !important;
+}
+
+.smb-22{
 -webkit-box-shadow: 10px 10px 42px -5px rgba(84,83,84,1);
 -moz-box-shadow: 10px 10px 42px -5px rgba(84,83,84,1);
 box-shadow: 10px 10px 42px -5px rgba(84,83,84,1);

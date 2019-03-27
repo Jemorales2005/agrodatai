@@ -1,3 +1,4 @@
+<h1 class="titPrincipal p-3">¡Bienvenido!</h1>
 <!--inicio row precios-->
           <h1 class="titCategoria p-2">Precios</h1>
           <div class="row p-0">
@@ -19,23 +20,22 @@
                           <div class="col-sm-0 col-md-3 col-lg-6">
                           </div>
                           <div class="btn-group col-sm-12 col-md-9 col-lg-6 mb-0 mt-0" role="group" aria-label="Basic example">
-                            <button (click)="actualizarTipoPrecio(0)" type="button"
-                                [class.bg-green1]="tipoPrecios === 0"
-                                [class.bg-green2]="tipoPrecios === 1"
-                                 class="btn btn-sm">Corriente</button>
-                            <button (click)="actualizarTipoPrecio(1)" type="button"
-                                [class.bg-green1]="tipoPrecios === 1"
-                                [class.bg-green2]="tipoPrecios === 0"
-                                class="btn btn-sm">Constante</button>
+                            <button (click)="actualizarTipoPrecio('corrientes',produce.id_producto)" type="button" class="btn btn-card btn-sm"
+                            [class.btn-card-active]="produce.preciosTipo === 'corrientes'"
+                            >Corriente</button>
+                            <button (click)="actualizarTipoPrecio('constantes',produce.id_producto)" type="button" class="btn btn-card btn-sm"
+                            [class.btn-card-active]="produce.preciosTipo === 'constantes'"
+                            >Constante</button>
                           </div>
                         </div>
                      </div>
                      <div class="card-text pt-2">
-                       <div *ngIf="produce.transable==1" class="container">
+                       <div *ngIf="produce.transable==10" class="container">
                          <div class="row">
                            <div class="col-sm-12 col-md-6 col-lg-6 p-0">
                              <div class="text-center p-4"><strong>NAL.Bolsa de Valores de Colombia (BVC)</strong></div>
-                             <app-graphs [ArrayData]='dataArray' [ArrayLabels]='dataLabels'></app-graphs>
+                            <app-graphs [ArrayData]='produce.dataCorrientes' [ArrayLabels]='produce.datalabels'></app-graphs>
+
                            </div>
                            <div class="col-sm-12 col-md-6 col-lg-6 p-0">
                             <div class="text-center p-4"><strong>INT. Chicago Mercantile Exchange (CME)</strong></div>
@@ -43,21 +43,51 @@
                            </div>
                          </div>
                        </div>
-                       <div *ngIf="produce.transable==0" class="container">
+                       <div *ngIf="1==1" class="container"><!-- produce.transable==0 -->
                          <div class="row">
-                           <div class="col-sm-12 col-md-12 col-lg-12 p-0">
-                             <app-graphs [ArrayData]='dataArray' [ArrayLabels]='dataLabels'></app-graphs>
-                           </div>
+       <div *ngIf="produce.graficar=='on'" class="col-sm-12 col-md-12 col-lg-12 p-0">
+        <div *ngIf="produce.preciosTipo=='corrientes'" class="col-sm-12 col-md-12 col-lg-12 p-0">
+         <app-graphs [ArrayData]='produce.dataCorrientes' [ArrayLabels]='produce.datalabels'></app-graphs>
+        </div>
+        <div *ngIf="produce.preciosTipo=='constantes'" class="col-sm-12 col-md-12 col-lg-12 p-0">
+         <app-graphs [ArrayData]='produce.dataConstantes' [ArrayLabels]='produce.datalabels'></app-graphs>
+        </div>
+       </div>
                          </div>
                        </div>
-                       <!-- <app-graphs [datosGraph]='dataGraph'></app-graphs> -->
                      </div>
                     </div>
+                    <!--<div class="container">
+                      <div class="row">
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                           dataLabels
+                             <ul>
+                               <li *ngFor="let prueba of produce.datalabels;">{{prueba}}</li>
+                             </ul>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                          constantes
+                           <ul>
+                               <li *ngFor="let prueba of produce.dataCorrientes;">{{prueba}}</li>
+                           </ul>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                          corrientes
+                           <ul>
+                               <li *ngFor="let prueba of produce.dataConstantes;">{{prueba}}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>-->
+
+
                     <div class="card-footer">
-                      <button (click)="ActualizarPrecios('mensual',produce.id_producto)" type="button" class="btn btn-sm mr-1 btn-periodo"
-                      [class.active]="rangoConsulta == 'mensual'">Mes</button>
-                      <button (click)="ActualizarPrecios('semanal',produce.id_producto)" type="button" class="btn btn-sm mr-1 btn-periodo">Semana</button>
-                      <button (click)="ActualizarPrecios('anual',produce.id_producto)"type="button" class="btn btn-sm mr-1 btn-periodo">Año</button>
+                      <button id="btn_{{produce.id_producto}}" (click)="actualizarPeriodoPrecios('anual',produce.id_producto)"type="button" class="btn btn-sm mr-1 btn-card" [class.btn-card-active]="produce.periodo === 'anual'"
+                      >Año</button>
+                      <button id="btn_{{produce.id_producto}}" (click)="actualizarPeriodoPrecios('mensual',produce.id_producto)" type="button" class="btn btn-sm mr-1 btn-card" [class.btn-card-active]="produce.periodo === 'mensual'"
+                      >Mes</button>
+                      <button id="btn_{{produce.id_producto}}" (click)="actualizarPeriodoPrecios('semanal',produce.id_producto)" type="button" class="btn btn-sm mr-1 btn-card" [class.btn-card-active]="produce.periodo === 'semanal'"
+                      >Semana</button>
                     </div>
                   </div>
                 </div>
@@ -83,13 +113,16 @@
 
                     <div class="card-body">
                      <p class="card-text pt-2">
-                       <!-- <app-graphs></app-graphs> -->
+                       <app-graphs-bar></app-graphs-bar>
                      </p>
                     </div>
                     <div class="card-footer bg-light">
-                      <button type="button" class="btn btn-sm mr-1 bg-green1">Década</button>
-                      <button type="button" class="btn btn-sm mr-1 bg-green2">Mes</button>
-                      <button type="button" class="btn btn-sm mr-1 bg-green2">Año</button>
+                      <button id="btnClima_{{produce.id_producto}}" (click)="actualizarPeriodoClima('semanal',produce.id_producto)"type="button" class="btn btn-sm mr-1 btn-card" [class.btn-card-active]="produce.periodoClima === 'semanal'"
+                      >Semana</button>
+                      <button id="btnClima_{{produce.id_producto}}" (click)="actualizarPeriodoClima('decadal',produce.id_producto)"type="button" class="btn btn-sm mr-1 btn-card" [class.btn-card-active]="produce.periodoClima === 'decadal'"
+                      >Decadal</button>
+                      <button id="btnClima_{{produce.id_producto}}" (click)="actualizarPeriodoClima('mensual',produce.id_producto)"type="button" class="btn btn-sm mr-1 btn-card" [class.btn-card-active]="produce.periodoClima === 'mensual'"
+                      >Mes</button>
                     </div>
                   </div>
                 </div>
@@ -97,3 +130,4 @@
                 <!--fin card-->
             </div>
             <!--fin row clima-->
+

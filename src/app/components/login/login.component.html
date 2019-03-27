@@ -18,10 +18,11 @@
             <div id="loginForm">
               <div class="loginForm-bg">
                <p class="titLogin">INGRESAR</p>
-               <!--<form>-->
+
+               <!-- <form #formLogin="ngForm" (ngSubmit)="onLogin(formLogin)"> -->
                 <div class="form-group titForm">
                   <label for="Nombre">NOMBRE</label>
-                  <input [(ngModel)]="username" type="email" class="form-control inputsForm" placeholder="Ingrese nombre">
+                  <input  name="username" id="username" type="text" class="form-control inputsForm" placeholder="Ingrese nombre" [(ngModel)]="username" required>
                 </div>
                 <div class="form-group titForm">
                   <label for="Password">CONTRASEÑA</label>
@@ -31,9 +32,10 @@
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                   <label class="form-check-label" for="recordar">Recordarme</label>
                 </div>
-                <button (click)="login()" type="button" class="btn btn-enviar">INGRESAR
+                <button (click)=login() type="button" class="btn btn-enviar">INGRESAR
                 </button>
-                <button type="submit" class="btn btn-registar" routerLink="/register">REGISTRAR
+              <!-- </form> -->
+               <button class="btn btn-registar" routerLink="/register">REGISTRAR
                 </button>
                   <div class="flex-c-m">
                     <a href="#" class="login100-social-item bg1">
@@ -54,7 +56,7 @@
                   </div>
                   <hr>
                 <div class="titFooterForm"><a href="#">¿Olvido la contraseña?</a></div>
-              <!--</form>-->
+
 
               </div>
             </div>

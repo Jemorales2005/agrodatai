@@ -48,4 +48,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*
+onLogin(form:NgForm){
+    console.log(form);
+    if(form.valid){
+  */
+
 }

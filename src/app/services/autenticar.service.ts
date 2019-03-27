@@ -90,4 +90,12 @@ export class AutenticarService {
       headers: headers
     });
   }
+
+  public ActualizarValoresClima(data,token){
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+        headers = new HttpHeaders().set('Authorization', 'Token ' + token);
+    return this.http.post('https://services-dot-cebar-servinf-agrodat-ai-dev.appspot.com/clima/',data,{
+      headers: headers
+    });
+  }
 }

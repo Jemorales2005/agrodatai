@@ -13,7 +13,7 @@ export class UnloggedGuard implements CanActivate {
         if(localStorage.getItem('username')===null){
         return true;
         } else {
-         this.router.navigate(['/board']);
+         this.router.navigate(['/dashboard']);
          return false;
         }
       }

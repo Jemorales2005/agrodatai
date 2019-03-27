@@ -31,6 +31,7 @@ import { ClimaComponent } from './dashboard/clima/clima.component';
 import { FinancieroComponent } from './dashboard/financiero/financiero.component';
 import { ProduccionComponent } from './dashboard/produccion/produccion.component';
 import { MejorOpcionVentaComponent } from './dashboard/mejor-opcion-venta/mejor-opcion-venta.component';
+import { GraphsBarComponent } from './components/graphs-bar/graphs-bar.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { MejorOpcionVentaComponent } from './dashboard/mejor-opcion-venta/mejor-
     ClimaComponent,
     FinancieroComponent,
     ProduccionComponent,
-    MejorOpcionVentaComponent
+    MejorOpcionVentaComponent,
+    GraphsBarComponent
   ],
   imports: [
     BrowserModule,

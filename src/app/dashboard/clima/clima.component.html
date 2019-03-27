@@ -1,3 +1,31 @@
-<p>
-  clima works!
-</p>
+<!-- inicio row clima-->
+         <a name="clima"></a>
+            <h1 class="titCategoria">Clima</h1>
+              <div class="row">
+
+                <!--ini card-->
+                <ng-container *ngFor="let produce of produceUsuario;">
+                <div class="col-sm-12 col-md-6 col-lg-6 pb-3">
+                  <div class="card smb-22">
+                    <div class="card-header styHeaderCard">
+                      <i class="fa fa-home mr-1"></i>
+                      {{produce.nombre_departamento}} - {{produce.nombre_municipio}} - {{produce.nombre_vereda}}
+                      <i class="fas fa-pen" style="float: right;"></i>
+                    </div>
+
+                    <div class="card-body">
+                     <p class="card-text pt-2">
+                       <!-- <app-graphs></app-graphs> -->
+                     </p>
+                    </div>
+                    <div class="card-footer bg-light">
+                      <button type="button" class="btn btn-sm mr-1 bg-green1">Década</button>
+                      <button type="button" class="btn btn-sm mr-1 bg-green2">Mes</button>
+                      <button type="button" class="btn btn-sm mr-1 bg-green2">Año</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+                <!--fin card-->
+            </div>
+            <!--fin row clima-->
