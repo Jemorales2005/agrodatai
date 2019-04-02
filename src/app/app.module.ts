@@ -32,6 +32,7 @@ import { FinancieroComponent } from './dashboard/financiero/financiero.component
 import { ProduccionComponent } from './dashboard/produccion/produccion.component';
 import { MejorOpcionVentaComponent } from './dashboard/mejor-opcion-venta/mejor-opcion-venta.component';
 import { GraphsBarComponent } from './components/graphs-bar/graphs-bar.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { GraphsBarComponent } from './components/graphs-bar/graphs-bar.component
     FinancieroComponent,
     ProduccionComponent,
     MejorOpcionVentaComponent,
-    GraphsBarComponent
+    GraphsBarComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

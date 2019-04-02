@@ -13,6 +13,7 @@ import { BoardComponent } from './components/board/board.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { GraphsBarComponent } from './components/graphs-bar/graphs-bar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegistroComponent } from './components/registro/registro.component';
 import { dashboardRoutes } from './dashboard/dashboard.routes';
 
 const appRoutes: Routes = [
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
 {path:'home', component:HomeComponent},
 {path:'login', component:LoginComponent,canActivate: [UnloggedGuard]},
 {path:'register', component:RegisterComponent},
-{path: 'dashboard', component:DashboardComponent, children: dashboardRoutes},
+{path:'registro', component:RegistroComponent},
+{path: 'dashboard', component:DashboardComponent, canActivate: [LoggedGuard], children: dashboardRoutes},
 {path: '**',redirectTo: 'home'}
 ];
 

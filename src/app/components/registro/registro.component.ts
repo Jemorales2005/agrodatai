@@ -5,12 +5,11 @@ import { AutenticarService } from '../../services/autenticar.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class RegisterComponent implements OnInit {
-
+export class RegistroComponent implements OnInit {
 
 private map = null;
 public markers : any = [];
@@ -80,7 +79,7 @@ tiposProductor: any = [
       /*cargamos polígono del departamento*/
         this.autenticarService.cargarPoligonoDepartamento(this.codigoDaneDepartamento)
         .subscribe(res => {
-                       /*Inicio evento Google Maps dibujar polígono departamento*/
+                      /*Inicio evento Google Maps dibujar polígono departamento*/
                         //obtenemos el array de coordenadas del polygono
                         this.limpiarCoordenadas(res['rows']);
                         //eliminamos los polygons que esten dibujados
@@ -106,7 +105,6 @@ tiposProductor: any = [
       /**fin cargamos el select de municipios del departamento seleccionado**/
       break;
       case 'Municipios':
-       //console.log(this.listaMunicipiosDepto);
       this.codigoDaneMunicipio=event.target.value;
       //console.log('CodMncp> '+this.codigoDaneMunicipio);
          /*cargamos polígono del municipio*/
@@ -116,7 +114,6 @@ tiposProductor: any = [
             /*Inicio evento Google Maps dibujar polígono departamento*/
                         //var dep = this.listaDepartamentos.find(o=>o.cod_dpto==this.departamento);
                         //obtenemos el array de coordenadas del polygono
-                        console.log(res);
                         this.limpiarCoordenadas(res['rows']);
                         //eliminamos los polygons que esten dibujados
                         this.clearPolygonos();
@@ -219,7 +216,7 @@ tiposProductor: any = [
       case 'AdicionarProducto':
         var prod = this.listaProductos.find(o=>o.id_producto==this.producto);
         var dep = this.listaDepartamentos.find(o=>o.cod_dpto==this.departamento);
-        var mncp = this.listaMunicipiosDepto.find(o=>o.cod_mpio==this.municipio);
+        var mncp = this.listaMunicipiosDepto.find(o=>o.id==this.municipio);
         var vrd = this.listaVeredasMncpio.find(o=>o.cod_dane==this.vereda);
         this.agricultorProductos.unshift( {id_producto:this.producto, nombre_producto:prod['nombre_producto'], iddepartamento:this.departamento, departamento:dep['nom_dpto'], idmunicipio:this.municipio, municipio:mncp['municipio'],  codigo_dane:this.vereda, vereda:vrd['nom_vereda'], id_productor:0, latd:4.6560663, lngd:-74.0595918});
         this.divCultivosProductor = 0;
@@ -394,7 +391,91 @@ tiposProductor: any = [
           mapTypeControl: false,
           streetViewControl: false
         });
+        //*************inicio auto complete********//
+        var card = document.getElementById('pac-card');
+        var input = document.getElementById('pac-input');
+        var types = document.getElementById('type-selector');
+        var strictBounds = document.getElementById('strict-bounds-selector');
 
+        point.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        // Bind the map's bounds (viewport) property to the autocomplete object,
+        // so that the autocomplete requests use the current map bounds for the
+        // bounds option in the request.
+        autocomplete.bindTo('bounds', point.map);
+
+        // Set the data fields to return when the user selects a place.
+        autocomplete.setFields(
+            ['address_components', 'geometry', 'icon', 'name']);
+
+        var infowindow = new google.maps.InfoWindow();
+        var infowindowContent = document.getElementById('infowindow-content');
+        infowindow.setContent(infowindowContent);
+        var marker = new google.maps.Marker({
+          map: point.map,
+          anchorPoint: new google.maps.Point(0, -29)
+        });
+        marker.setDraggable(true);
+        //point.markers.push(marker);
+
+        autocomplete.addListener('place_changed', function() {
+          infowindow.close();
+          marker.setVisible(false);
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            // User entered the name of a Place that was not suggested and
+            // pressed the Enter key, or the Place Details request failed.
+            window.alert("No details available for input: '" + place.name + "'");
+            return;
+          }
+
+          // If the place has a geometry, then present it on a map.
+          if (place.geometry.viewport) {
+            point.map.fitBounds(place.geometry.viewport);
+          } else {
+            point.map.setCenter(place.geometry.location);
+            point.map.setZoom(17);  // Why 17? Because it looks good.
+          }
+          marker.setPosition(place.geometry.location);
+          marker.setVisible(true);
+
+          var address = '';
+          if (place.address_components) {
+            address = [
+              (place.address_components[0] && place.address_components[0].short_name || ''),
+              (place.address_components[1] && place.address_components[1].short_name || ''),
+              (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+          }
+          infowindow.setPosition(place.geometry.location);
+          infowindowContent.children['place-icon'].src = place.icon;
+          infowindowContent.children['place-name'].textContent = place.name;
+          infowindowContent.children['place-address'].textContent = address;
+          infowindow.open(point.map, marker);
+        });
+
+        // Sets a listener on a radio button to change the filter type on Places
+        // Autocomplete.
+        function setupClickListener(id, types) {
+          var radioButton = document.getElementById(id);
+          radioButton.addEventListener('click', function() {
+            autocomplete.setTypes(types);
+          });
+        }
+
+        setupClickListener('changetype-all', []);
+        setupClickListener('changetype-address', ['address']);
+        setupClickListener('changetype-establishment', ['establishment']);
+        setupClickListener('changetype-geocode', ['geocode']);
+
+        /*document.getElementById('use-strict-bounds')
+            .addEventListener('click', function() {
+              console.log('Checkbox clicked! New state=' + point.checked);
+              autocomplete.setOptions({strictBounds: this.checked});
+            });*/
+        //*************fin auto complete************//
        //creo marker al dar clic cobre el mapa.
         point.map.addListener('click', function(event) {
         point.addMarker(event.latLng);
@@ -445,5 +526,3 @@ tiposProductor: any = [
 
 
 }
-
-

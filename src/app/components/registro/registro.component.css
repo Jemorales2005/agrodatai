@@ -1,0 +1,206 @@
+#map {
+  height: 425px;
+  max-height: 400px;
+}
+
+#contenedorRegister {
+  position: relative;
+  /*background-image: url('/assets/images/Agrodat-App-15.jpg');*/
+
+}
+
+#contenedorRegister .overlay {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  }
+#contenedorRegister .overlay .container,
+#contenedorRegister .overlay .row  {
+height: 100%;
+}
+#contenedorRegister .overlay .container .row .central{
+position: relative;
+border-radius: 8px;
+margin:0;
+padding: 0;
+/**sombra**/
+-webkit-box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.75);
+}
+#contenedorRegister .overlay .container .row .msgHome{
+float:left;
+width:35%;
+}
+.txtHome{
+width:35%;
+position: absolute;
+top: 200px;
+padding: 0px 20px 0px 20px;
+}
+#registerForm .registerForm-bg {
+font-family: 'Open Sans', sans-serif;
+min-height: 480px;
+border-top-right-radius:8px;
+border-bottom-right-radius: 8px;
+vertical-align: top;
+font-weight: bold;
+text-align: left;
+background-color: white;
+color:#1B7A6F;
+padding: 15px;
+}
+
+#registerForm .titRegistro {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  color:#502975;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+#registerForm .titForm {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0px 0px 0px 10px;
+}
+#registerForm .inputsForm{
+  border-radius: 15px;
+  background-color: #D5F5E3;
+  font-size: 12px;
+}
+.slct-50{
+  width: 50%;
+  border-radius: 20px;
+  color: #049E82;
+  background-color: #9DFCFC;
+  font-size: 12px;
+}
+
+#registerForm .flex-c-m {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+td {
+    font-size: 11px;
+    color: #646A6A;
+  }
+th {
+    font-size: 11px;
+  }
+.counter{
+  text-align: center;
+  font-weight: bold;
+  color: #502975;
+}
+
+.txt-home{
+  font-weight: bold;
+  font-size: 6vh;
+  color: #FFF !important;
+}
+
+@media only screen and (max-width: 800px) {
+
+  #registerForm .registerForm-bg {
+  width: 95%;
+  }
+
+  .txt-home{
+  font-weight: normal;
+  font-size: 20px;
+  }
+
+  #contenedorRegister .overlay .row  {
+    box-shadow: 0px;
+  }
+
+  #registerForm .registerForm-bg {
+  width:98%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 8px;
+
+  }
+
+}
+/**autocomplete**/
+#description {
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #00FFE0;
+        background-color: #00A887;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 6px 12px;
+      }
+
+
+

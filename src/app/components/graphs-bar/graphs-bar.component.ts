@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 //import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 //import { Label } from 'ng2-charts';
@@ -9,6 +9,9 @@ import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
   styleUrls: ['./graphs-bar.component.css']
 })
 export class GraphsBarComponent implements OnInit {
+  @Input() ArrayData: Array<any> ;
+  @Input() ArrayLabels: Array<any> ;
+
 public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -20,28 +23,38 @@ public barChartOptions: ChartOptions = {
       }
     }
   };
-  public barChartLabels: Array<any> = [1, 2, 3, 4, 5, 6, 7];
+  public barChartLabels: Array<any> = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   //public barChartPlugins = [pluginDataLabels];
 
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Precipitación' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Temperatura' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Luminosidad' }
-  ];
+  public barChartData: ChartDataSets[] = [];
 
   constructor() { }
 
   ngOnInit() {
+    let _ArrayData:Array<any> = new Array(this.ArrayData.length);
+     for (let i = 0; i < this.ArrayData.length; i++) {
+      _ArrayData[i] = {data: new Array(this.ArrayData[i].data.length), label: this.ArrayData[i].label};
+        for (let j = 0; j < this.ArrayData[i].data.length; j++) {
+          _ArrayData[i].data[j] = this.ArrayData[i]['data'][j];
+        }
+     }
+     this.barChartData = _ArrayData;
+
+     let _ArrayLabels:Array<any> = [];
+     for (let i = 0; i < this.ArrayLabels.length; i++) {
+         _ArrayLabels.push(this.ArrayLabels[i]);
+        }
+     this.barChartLabels = _ArrayLabels;
   }
 
   // events
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  public chartClicked({ event, active }) {
     console.log(event, active);
   }
 
-  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  public chartHovered({ event, active }): void {
     console.log(event, active);
   }
 

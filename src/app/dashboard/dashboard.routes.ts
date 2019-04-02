@@ -14,7 +14,7 @@ export const dashboardRoutes: Routes = [
 {path:'financiero', component:FinancieroComponent},
 {path:'produccion', component:ProduccionComponent},
 {path: 'mejor-opcion-venta', component:MejorOpcionVentaComponent},
-{path: '**', component: DefaultComponent}
+{path: '**',redirectTo: ''}
 ];
 
 

@@ -30,11 +30,19 @@
                         </div>
                      </div>
                      <div class="card-text pt-2">
-                       <div *ngIf="produce.transable==10" class="container">
+                       <div *ngIf="produce.transable==1" class="container">
                          <div class="row">
                            <div class="col-sm-12 col-md-6 col-lg-6 p-0">
                              <div class="text-center p-4"><strong>NAL.Bolsa de Valores de Colombia (BVC)</strong></div>
-                            <app-graphs [ArrayData]='produce.dataCorrientes' [ArrayLabels]='produce.datalabels'></app-graphs>
+
+                     <div *ngIf="produce.graficar=='on'" class="col-sm-12 col-md-12 col-lg-12 p-0">
+                      <div *ngIf="produce.preciosTipo=='corrientes'" class="col-sm-12 col-md-12 col-lg-12 p-0">
+                       <app-graphs [ArrayData]='produce.dataCorrientes' [ArrayLabels]='produce.datalabels'></app-graphs>
+                      </div>
+                      <div *ngIf="produce.preciosTipo=='constantes'" class="col-sm-12 col-md-12 col-lg-12 p-0">
+                       <app-graphs [ArrayData]='produce.dataConstantes' [ArrayLabels]='produce.datalabels'></app-graphs>
+                      </div>
+                     </div>
 
                            </div>
                            <div class="col-sm-12 col-md-6 col-lg-6 p-0">
@@ -43,7 +51,7 @@
                            </div>
                          </div>
                        </div>
-                       <div *ngIf="1==1" class="container"><!-- produce.transable==0 -->
+                       <div *ngIf="produce.transable==0" class="container">
                          <div class="row">
        <div *ngIf="produce.graficar=='on'" class="col-sm-12 col-md-12 col-lg-12 p-0">
         <div *ngIf="produce.preciosTipo=='corrientes'" class="col-sm-12 col-md-12 col-lg-12 p-0">
@@ -112,9 +120,10 @@
                     </div>
 
                     <div class="card-body">
-                     <p class="card-text pt-2">
-                       <app-graphs-bar></app-graphs-bar>
-                     </p>
+                      <div *ngIf="produce.graficarClima=='on'" class="card-text pt-2">
+                       <app-graphs-bar [ArrayData]='produce.dataClima' [ArrayLabels]='produce.dataLabelsClima'>
+                       </app-graphs-bar>
+                     </div>
                     </div>
                     <div class="card-footer bg-light">
                       <button id="btnClima_{{produce.id_producto}}" (click)="actualizarPeriodoClima('semanal',produce.id_producto)"type="button" class="btn btn-sm mr-1 btn-card" [class.btn-card-active]="produce.periodoClima === 'semanal'"

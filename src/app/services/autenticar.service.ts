@@ -59,17 +59,17 @@ export class AutenticarService {
   }
 
   public cargarPoligonoDepartamento(codDepto){
-       return this.http.get(environment.URLBackend+'/polidepartamentos/?id='+codDepto,{
+       return this.http.get(environment.URLBackend+'/polidepartamentos/?cod_dpto='+codDepto,{
     });
   }
 
   public cargarListaMunicipios(codDepto){
-       return this.http.get(environment.URLBackend+'/municipios/?id='+codDepto,{
+       return this.http.get(environment.URLBackend+'/municipios/?cod_dpto='+codDepto,{
     });
   }
 
   public cargarPoligonoMunicipio(codMncp){
-       return this.http.get(environment.URLBackend+'/polimunicipios/?id='+codMncp,{
+       return this.http.get(environment.URLBackend+'/polimunicipios/?cod_mpio='+codMncp,{
     });
   }
 
@@ -79,7 +79,7 @@ export class AutenticarService {
   }
 
   public cargarPoligonoVereda(codVrd){
-       return this.http.get(environment.URLBackend+'/poliveredas/?id='+codVrd,{
+       return this.http.get(environment.URLBackend+'/poliveredas/?cod_dane='+codVrd,{
     });
   }
 
